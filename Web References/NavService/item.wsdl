@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s4="urn:microsoft-dynamics-nav/xmlports/ExportCustomerRefTranslates" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="urn:microsoft-dynamics-nav/xmlports/ExportPaymentMean" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s2="urn:microsoft-dynamics-nav/xmlports/ExportPaymentMeans" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s3="urn:microsoft-dynamics-nav/xmlports/ExportCardTypeProvider" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="urn:microsoft-dynamics-nav/xmlports/ExportPaymentMean" />
+      <s:import namespace="urn:microsoft-dynamics-nav/xmlports/ExportPaymentMeans" />
+      <s:import namespace="urn:microsoft-dynamics-nav/xmlports/ExportCardTypeProvider" />
+      <s:import namespace="urn:microsoft-dynamics-nav/xmlports/ExportCustomerRefTranslates" />
+      <s:element name="CreateCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comName2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="postCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="countryCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="languageCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="externalPrinting" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="deleteOnKDS" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateCustomerResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateTraveller">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travTitle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travDirectPhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travDirectFax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travMobilePhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travHomePhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="languageCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="emailMode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travFirstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travTempKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travCC1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travCC2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travCC3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travCC4" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travCC5" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travCC1Id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travCC2Id" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="analyticalScope" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isAccountant" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isTravelDir" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isOccasional" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isVIP" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="deleteOnKDS" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateTravellerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateTravellerResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCostCenter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comcode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="analyticalRange" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="analyticalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="identifier" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isActive" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCostCenterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateCostCenterResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTravellerPaymentMean">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="perCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serviceGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="costCenter" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="exportPaymentMean" type="s1:Nav_PaymentMean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTravellerPaymentMeanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exportPaymentMean" type="s1:Nav_PaymentMean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTravellerPaymentMeans">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="perCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serviceGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="costCenter" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="exportPaymentMeans" type="s2:Nav_PaymentMeans" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTravellerPaymentMeansResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exportPaymentMeans" type="s2:Nav_PaymentMeans" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCostCenterPaymentMean">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serviceGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="costCenter" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="exportPaymentMean" type="s1:Nav_PaymentMean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCostCenterPaymentMeanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exportPaymentMean" type="s1:Nav_PaymentMean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerPaymentMean">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serviceGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="exportPaymentMean" type="s1:Nav_PaymentMean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerPaymentMeanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exportPaymentMean" type="s1:Nav_PaymentMean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMerchantAndEnhancedFlow">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardProviderCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lodged" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardBin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="exportCardType" type="s3:NAV_CardTypeProviders" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMerchantAndEnhancedFlowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exportCardType" type="s3:NAV_CardTypeProviders" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPaymentCustomerReference">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customerNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travellerNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="provider" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="exportCustRef" type="s4:NAV_CustomerRefTranslates" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPaymentCustomerReferenceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exportCustRef" type="s4:NAV_CustomerRefTranslates" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/ExportPaymentMean">
+      <s:complexType name="Nav_PaymentMean" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PaymentType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Origin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Service" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CostCenterID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Card" type="s1:Card" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavException" type="s1:NavException" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Card" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CardType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CardToken" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ExpirationDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CardReference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LodgedCard" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MerchandFlow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EnhanceFlow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TruncatedPAN" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NavException" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/ExportPaymentMeans">
+      <s:complexType name="Nav_PaymentMeans" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RequestedService" type="s2:RequestedService" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavException" type="s2:NavException" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RequestedService">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Origin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Service" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CostCenterID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Card" type="s2:Card" />
+        </s:sequence>
+        <s:attribute name="RequestedValue" type="s:string" />
+      </s:complexType>
+      <s:complexType name="Card" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CardType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardToken" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExpirationDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CardReference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LodgedCard" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MerchandFlow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EnhanceFlow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TruncatedPAN" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NavException" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/ExportCardTypeProvider">
+      <s:complexType name="NAV_CardTypeProviders" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NAV_CardTypeProvider" type="s3:NAV_CardTypeProvider" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NAV_CardTypeProvider">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CardType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LodgedType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FinancialFlow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EnhancedFlow" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/ExportCustomerRefTranslates">
+      <s:complexType name="NAV_CustomerRefTranslates" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NAV_CustomerRefTranslate" type="s4:NAV_CustomerRefTranslate" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NAV_CustomerRefTranslate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Label" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateCustomer" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateTravellerSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateTraveller" />
+  </wsdl:message>
+  <wsdl:message name="CreateTravellerSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateTravellerResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCostCenterSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateCostCenter" />
+  </wsdl:message>
+  <wsdl:message name="CreateCostCenterSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateCostCenterResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTravellerPaymentMeanSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTravellerPaymentMean" />
+  </wsdl:message>
+  <wsdl:message name="GetTravellerPaymentMeanSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTravellerPaymentMeanResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTravellerPaymentMeansSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTravellerPaymentMeans" />
+  </wsdl:message>
+  <wsdl:message name="GetTravellerPaymentMeansSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTravellerPaymentMeansResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCostCenterPaymentMeanSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCostCenterPaymentMean" />
+  </wsdl:message>
+  <wsdl:message name="GetCostCenterPaymentMeanSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCostCenterPaymentMeanResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerPaymentMeanSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerPaymentMean" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerPaymentMeanSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerPaymentMeanResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMerchantAndEnhancedFlowSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMerchantAndEnhancedFlow" />
+  </wsdl:message>
+  <wsdl:message name="GetMerchantAndEnhancedFlowSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMerchantAndEnhancedFlowResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentCustomerReferenceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPaymentCustomerReference" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentCustomerReferenceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPaymentCustomerReferenceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="NavisionSoap">
+    <wsdl:operation name="CreateCustomer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Create Customer</wsdl:documentation>
+      <wsdl:input message="tns:CreateCustomerSoapIn" />
+      <wsdl:output message="tns:CreateCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTraveller">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Create Traveller</wsdl:documentation>
+      <wsdl:input message="tns:CreateTravellerSoapIn" />
+      <wsdl:output message="tns:CreateTravellerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCostCenter">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Create Cost Center</wsdl:documentation>
+      <wsdl:input message="tns:CreateCostCenterSoapIn" />
+      <wsdl:output message="tns:CreateCostCenterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTravellerPaymentMean">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Traveller Payment Mean</wsdl:documentation>
+      <wsdl:input message="tns:GetTravellerPaymentMeanSoapIn" />
+      <wsdl:output message="tns:GetTravellerPaymentMeanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTravellerPaymentMeans">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Traveller Payment Means</wsdl:documentation>
+      <wsdl:input message="tns:GetTravellerPaymentMeansSoapIn" />
+      <wsdl:output message="tns:GetTravellerPaymentMeansSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCostCenterPaymentMean">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get CostCenter Payment Mean</wsdl:documentation>
+      <wsdl:input message="tns:GetCostCenterPaymentMeanSoapIn" />
+      <wsdl:output message="tns:GetCostCenterPaymentMeanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerPaymentMean">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Customer Payment Mean</wsdl:documentation>
+      <wsdl:input message="tns:GetCustomerPaymentMeanSoapIn" />
+      <wsdl:output message="tns:GetCustomerPaymentMeanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMerchantAndEnhancedFlow">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Financial And Enhanced Flow</wsdl:documentation>
+      <wsdl:input message="tns:GetMerchantAndEnhancedFlowSoapIn" />
+      <wsdl:output message="tns:GetMerchantAndEnhancedFlowSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentCustomerReference">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Payment Customer Reference</wsdl:documentation>
+      <wsdl:input message="tns:GetPaymentCustomerReferenceSoapIn" />
+      <wsdl:output message="tns:GetPaymentCustomerReferenceSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NavisionSoap" type="tns:NavisionSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateCustomer">
+      <soap:operation soapAction="http://tempuri.org/CreateCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTraveller">
+      <soap:operation soapAction="http://tempuri.org/CreateTraveller" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCostCenter">
+      <soap:operation soapAction="http://tempuri.org/CreateCostCenter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTravellerPaymentMean">
+      <soap:operation soapAction="http://tempuri.org/GetTravellerPaymentMean" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTravellerPaymentMeans">
+      <soap:operation soapAction="http://tempuri.org/GetTravellerPaymentMeans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCostCenterPaymentMean">
+      <soap:operation soapAction="http://tempuri.org/GetCostCenterPaymentMean" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerPaymentMean">
+      <soap:operation soapAction="http://tempuri.org/GetCustomerPaymentMean" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMerchantAndEnhancedFlow">
+      <soap:operation soapAction="http://tempuri.org/GetMerchantAndEnhancedFlow" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentCustomerReference">
+      <soap:operation soapAction="http://tempuri.org/GetPaymentCustomerReference" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NavisionSoap12" type="tns:NavisionSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateCustomer">
+      <soap12:operation soapAction="http://tempuri.org/CreateCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTraveller">
+      <soap12:operation soapAction="http://tempuri.org/CreateTraveller" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCostCenter">
+      <soap12:operation soapAction="http://tempuri.org/CreateCostCenter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTravellerPaymentMean">
+      <soap12:operation soapAction="http://tempuri.org/GetTravellerPaymentMean" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTravellerPaymentMeans">
+      <soap12:operation soapAction="http://tempuri.org/GetTravellerPaymentMeans" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCostCenterPaymentMean">
+      <soap12:operation soapAction="http://tempuri.org/GetCostCenterPaymentMean" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerPaymentMean">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomerPaymentMean" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMerchantAndEnhancedFlow">
+      <soap12:operation soapAction="http://tempuri.org/GetMerchantAndEnhancedFlow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentCustomerReference">
+      <soap12:operation soapAction="http://tempuri.org/GetPaymentCustomerReference" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Navision">
+    <wsdl:port name="NavisionSoap" binding="tns:NavisionSoap">
+      <soap:address location="http://navservicesmethods-test/NavWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NavisionSoap12" binding="tns:NavisionSoap12">
+      <soap12:address location="http://navservicesmethods-test/NavWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

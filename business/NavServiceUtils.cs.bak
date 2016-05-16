@@ -1,0 +1,148 @@
+﻿//==================================================================== 
+// Credit Card Encryption/Decryption Tool
+// 
+// Copyright (c) 2009-2014 Egencia.  All rights reserved. 
+// This software was developed by Egencia An Expedia Inc. Corporation
+// La Defense. Paris. France
+// The Original Code is Egencia 
+// The Initial Developer is Samatar Hassan
+//===================================================================
+
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Web;
+using SafeNetWS.creditcard;
+using SafeNetWS.NavService;
+using SafeNetWS.business.response.writer;
+using SafeNetWS.utils;
+
+namespace SafeNetWS.business
+{
+
+    public class NavServiceUtils
+    {
+        // Navision ws exceptions
+        private const string ErrorCode_PROVIDER_NOT_FOUND = "PROVIDER_NOT_FOUND" ;
+
+        // Navision ws credentials
+        private static string NavWsLogin = ConfigurationManager.AppSettings["NavWsLogin"].ToString();
+        private static string NavWsPassword = ConfigurationManager.AppSettings["NavWsPassword"].ToString();
+
+        //--> EGE-62034 : Revamp - CCE - Change Financial flow update
+        /// <summary>
+        /// Return Financial and enhanced flow
+        /// from navision
+        /// </summary>
+        /// <param name="ci">Card information</param>
+        /// <returns>Updated card information</returns>
+        public static void SetFinancialAndEnhancedFlows(CardInfos ci)
+        {
+            Navision nws = null;
+            try
+            {
+                // instanciate a new webservice
+                nws = new Navision();
+
+                NAV_CardTypeProviders res = new NAV_CardTypeProviders();
+
+                // call the method and return the payment means
+                nws.GetMerchantAndEnhancedFlow(NavWsLogin, NavWsPassword, ci.GetPOS(), ci.GetNavisionCardName(), ci.GetNavisionLodgedCard() == 0 ? false : true
+                    , ci.GetCardNumber().Substring(0, 6), ref res);
+
+                // Let's check if we have an exception code
+                string exceptionCode = res.NavException == null ? null : res.NavException[0].NavExceptionCode[0];
+
+                if (!String.IsNullOrEmpty(exceptionCode))
+                {
+                    if (exceptionCode.Equals(ErrorCode_PROVIDER_NOT_FOUND))
+                    {
+                        // Provider not found..set empty for financial and enhanced
+                        ci.SetNavisionFinancialFlow(string.Empty);
+                        ci.SetNavisionEnhancedFlow(string.Empty);
+                        return;
+                    }
+
+                    // We have an exception
+                    throw new Exception(res.NavException[0].NavExceptionDesc.ToString());
+                }
+                
+
+                // Let's return financial and enhanced flow
+                NAV_CardTypeProvider ret = res.NAV_CardTypeProvider[0];
+                ci.SetNavisionFinancialFlow(ret.FinancialFlow);
+                ci.SetNavisionEnhancedFlow(ret.EnhancedFlow);
+            }
+            finally
+            {
+                if (nws != null) nws.Dispose();
+            }
+        }
+        //<-- EGE-62034 : Revamp - CCE - Change Financial flow update
+
+
+
+        //-->EGE-62049 : CCE - Use Navision webservice to return Payment means
+        /// <summary>
+        /// Get traveller payment means for a traveller on a service
+        /// parameter retval will be updated
+        /// </summary>
+        /// <param name="retval">Traveller payment means</param>
+        public static void GetTravellerPaymentMeans(TravelerPaymentMeansResponse retval)
+        {
+            Navision nws = null;
+            try
+            {
+                // Define a new navision ws connection
+                nws = new Navision();
+
+                // instanciate a new webservice
+                Nav_PaymentMeans pm = new Nav_PaymentMeans();
+                
+                // call the method and return the payment means
+                nws.GetTravellerPaymentMeans(NavWsLogin, NavWsPassword, retval.GetArgPos(), retval.GetArgComcode(),
+                    retval.GetArgPercode(), retval.GetArgServicesList(), retval.GetArgCostCenter(), ref pm);
+
+                // Set result
+                retval.SetValue(pm);
+            }
+            finally
+            {
+                // Let's dispose now
+                if (nws != null) nws.Dispose();
+            }
+
+        }
+        //<--EGE-62049 : CCE - Use Navision webservice to return Payment means
+
+        /// <summary>
+        /// Test function for Navision webservice
+        /// Ask payment means for customer 2
+        /// </summary>
+        public static void Test()
+        {
+
+            Navision nws = null;
+            try
+            {
+                // Define a new navision ws connection
+                nws = new Navision();
+
+                // instanciate a new webservice
+                Nav_PaymentMeans pm = new Nav_PaymentMeans();
+
+                // call the method and return the payment means
+                nws.GetTravellerPaymentMeans(NavWsLogin, NavWsPassword,Const.PosFrance , "2",
+                    string.Empty, Const.ServiceAIR, string.Empty, ref pm);
+
+            }
+            finally
+            {
+                // Let's dispose now
+                if (nws != null) nws.Dispose();
+            }
+        }
+
+    }
+
+}

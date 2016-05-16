@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile>2015-08-25T18:23:07.9259894+05:30</TimeStampOfAssociatedLegacyPublishXmlFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/AntiXssLibrary.dll">
+      <publishTime>08/25/2015 18:22:24</publishTime>
+    </File>
+    <File Include="bin/HtmlSanitizationLibrary.dll">
+      <publishTime>08/25/2015 18:22:27</publishTime>
+    </File>
+    <File Include="bin/ingdnp.dll">
+      <publishTime>07/17/2011 23:31:18</publishTime>
+    </File>
+    <File Include="bin/SafeNetWS.dll">
+      <publishTime>09/09/2015 16:54:28</publishTime>
+    </File>
+    <File Include="bin/SafeNetWS.pdb">
+      <publishTime>10/13/2014 11:25:33</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>08/25/2015 18:22:49</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>08/25/2015 18:23:07</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>09/01/2015 18:15:23</publishTime>
+    </File>
+    <File Include="WSS.asmx">
+      <publishTime>08/25/2015 18:23:10</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

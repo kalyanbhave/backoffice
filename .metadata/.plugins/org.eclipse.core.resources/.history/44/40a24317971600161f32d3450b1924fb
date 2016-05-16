@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Built-By: nishanth.m
+Build-Jdk: 1.7.0_79
+Specification-Title: griffin-webapp
+Specification-Version: 1.7-RC17-SNAPSHOT
+Specification-Vendor: Egencia
+Implementation-Title: griffin-webapp
+Implementation-Version: 1.7-RC17-SNAPSHOT
+Implementation-Vendor-Id: com.egencia.griffin
+Implementation-Vendor: Egencia
+Created-By: Maven Integration for Eclipse
+

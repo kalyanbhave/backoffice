@@ -1,0 +1,1056 @@
+﻿//==================================================================== 
+// Credit Card Encryption/Decryption Tool
+// 
+// Copyright (c) 2009-2014 Egencia.  All rights reserved. 
+// This software was developed by Egencia An Expedia Inc. Corporation
+// La Defense. Paris. France
+// The Original Code is Egencia 
+// The Initial Developer is Samatar Hassan.
+//
+//===================================================================
+
+using System;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Configuration;
+using SafeNetWS.utils;
+using SafeNetWS.login;
+using SafeNetWS.creditcard.creditcardvalidator.bibit;
+using SafeNetWS.creditcard.creditcardvalidator._99bill;
+using SafeNetWS.www;
+using SafeNetWS.business;
+using SafeNetWS.log;
+using SafeNetWS.database;
+
+namespace SafeNetWS.creditcard.creditcardvalidator
+{
+
+    /// <summary>
+    /// Cette classe permet de vérifier la validité d'un numéro
+    /// de carte bancaire (contrôlé d'intégrité du numéro de la carte)
+    /// remarks : Il n'y aucun contrôle au niveau de la date d'expiration
+    /// Date : 22 septembre 2009
+    /// Auteur : Samatar
+    /// </summary>
+    public class CreditCardVerifier
+    {
+        private static Regex regCC;
+
+        private const int MinimalLength = 12;
+
+        public const string Cvc_Old = "OLD";
+
+        // Activation du processus d'envoi des fichiers de
+        // paiement
+        public const string CardLabel_BIBIT = "BIBIT";
+        public const string CardLabel_BTA = "BTA";
+        public const string CardLabel_AIRPLUS = "AIRPLUS";
+        public const string CardLabel_BANKCARD = "BANKCARD";
+
+        // Type de carte
+        public const int Invalid = -1;
+        private const int Visa = 0;
+        private const int Mastercard = 1;
+        private const int AmericanExpress = 2;
+        private const int EnRoute = 3;
+        private const int DinersClub = 4;
+        private const int Discover = 5;
+        private const int Jcb1 = 6;
+        private const int Jcb2 = 7;
+        private const int Bankcard = 8;
+        private const int Maestro = 9;
+        private const int Solo = 10;
+        private const int Switch = 11;
+        private const int Airplus = 12;
+        private const int Laser = 13;
+        private const int Voyager = 14;
+        private const int ChinaUnionPay = 15;
+
+      private static string[] navisionCardNames = 
+      {   
+          "VISA" , 
+          "MASTERCARD", 
+          "AMEX", 
+          "ENROUTE", 
+          "DINERS",
+          "DISCOVER",
+          "JCB1",
+          "JCB2",
+          "BANKCARD",
+          "MAESTRO",
+          "SOLO",
+          "SWITCH",
+          "AIRPLUS",
+          "LASER",
+          "VOYAGER",
+          "ChinaUnionPay"
+      };
+
+
+      private static string[] cardNames = 
+      {   
+          "Visa" , 
+          "Mastercard", 
+          "American Express", 
+          "En Route", 
+          "Diner's CLub/Carte Blanche",
+          "Discover",
+          "JCB1",
+          "JCB2",
+          "BankCard",
+          "Maestro",
+          "Solo",
+          "Switch",
+          "Airplus",
+          "Laser",
+          "Voyager",
+          "ChinaUnionpay"
+      };
+
+        // Type de carte supportée par Bibit (RBS)
+        public const int NavisionCardTypeVisa = 0;
+        public const int NavisionCardTypeEurocardMastercard = 1;
+        public const int NavisionCardTypeAmericanExpress= 2;
+
+        private static int[] navisionCardTypes = 
+        {   
+          0,   // Visa
+          1,   // Eurocard/Mastercard
+          3,   // Amex
+          -1,  // En Route
+          4,   // Diners club
+          5,   // Discover
+          6,   // JCB1
+          7,   // JCB2
+          -1,  // BANKCARD
+          13,  // Maestro
+          -1,  // Solo
+          13,  // Switch
+          12,  // Airplus
+          -1,   // Laser
+          -1,   // Voyager 
+          14   // China union pay
+        };
+        private static string[] shortNames = 
+        {   
+          "VI",   // Visa
+          "CA",   // Eurocard/Mastercard
+          "AX",   // Amex
+          "EN",   // En Route
+          "DC",   // Diners club
+          "DS",   // Discover
+          "JC",   // JCB1  Japan Credit Bureau
+          "JC",   // JCB2  Japan Credit Bureau
+          "CB",   // BANKCARD
+          "TO",   // Maestro
+          "Solo",   // Solo
+          "S",   // Switch
+          "TP",   // Airplus
+          "LA",    // Laser  
+          "VO",      // Voyager
+          "CUP"     //China Union pay
+        };
+        private static string[] navisionCardLabels = 
+        {   
+          CardLabel_BIBIT,  // Visa
+          CardLabel_BIBIT,  // Eurocard/Mastercard
+          CardLabel_BTA,    // Amex
+          string.Empty,       // En Route
+          CardLabel_BIBIT,       // Diners club
+          string.Empty,       // Discover
+          string.Empty,       // JCB1
+          string.Empty,       // JCB2
+          string.Empty,       // BANKCARD
+          string.Empty,       // Maestro
+          string.Empty,       // Solo
+          string.Empty,       // Switch
+          CardLabel_AIRPLUS,  // AIRPLUS
+          string.Empty,         // LASER
+          string.Empty,         // Voyager
+          string.Empty          //China Union Pay
+        };
+        private static string[] cvcs = 
+        {   
+          Cvc_Old,            // Visa
+          Cvc_Old,            // Eurocard/Mastercard
+          string.Empty,       // Amex
+          string.Empty,       // En Route
+          Cvc_Old,            // Diners club
+          string.Empty,       // Discover
+          string.Empty,       // JCB1
+          string.Empty,       // JCB2
+          string.Empty,       // BANKCARD
+          string.Empty,       // Maestro
+          string.Empty,       // Solo
+          string.Empty,       // Switch
+          string.Empty,       // AIRPLUS
+          string.Empty,       // LASER
+          string.Empty,        // Voyager
+          string.Empty         //China Union Pay
+        };
+        // Major Industry Identifier
+        // The first digit of your credit card number is the Major Industry Identifier (MII), 
+        // which represents the category of entity which issued your credit card
+
+        private static string[] MIIIssuerCategory = 
+        {   
+          "ISO/TC 68 and other industry assignments" , 
+          "Airlines", 
+          "Airlines and other industry assignments",
+          "Travel and entertainment", 
+          "Banking and financial", 
+          "Banking and financial",
+          "Merchandizing and banking",
+          "Petroleum",
+          "Telecommunications and other industry assignments",
+          "National assignment",
+       };
+       private static string[] RBSPaymentMethods = 
+       {   
+          "VISA-SSL",   // Visa
+          "ECMC-SSL",   // Eurocard/Mastercard
+          "AMEX-SSL",   // Amex
+          "",   // En Route
+          "DINERS-SSL",   // Diners club
+          "DISCOVER-SSL",   // Discover
+          "JCB-SSL",   // JCB1
+          "JCB-SSL",   // JCB2
+          "CB-SSL",   // BANKCARD
+          "MAESTRO-SSL",   // Maestro
+          string.Empty,   // Solo
+          string.Empty,   // Switch
+          string.Empty,   // Airplus
+          "LASER-SSL",    // Laser  
+          "VO" ,     // Voyager
+          "CUP-SSL" //China union pay 
+
+       };
+
+       public static string GetRBSPaymentMethod(int card)
+        {
+            // le moyen de payment RBS (BIBIT)
+            return (card > Invalid && card < RBSPaymentMethods.Length ? RBSPaymentMethods[card] : string.Empty);
+        }
+        public static string GetMIIIssuerCategory(int mii)
+        {
+            // L'identification de l'insdustrie (MII) est le premier digit
+            return (mii > Invalid && mii < MIIIssuerCategory.Length ? MIIIssuerCategory[mii] : string.Empty);
+        }
+        public static int GetNavisionCardType(int id)
+        {
+            return (id > Invalid && id < navisionCardTypes.Length ? navisionCardTypes[id] : 0);
+        }
+
+        public static string GetNavisionCardName(int id)
+        {
+            return (id > Invalid && id < navisionCardNames.Length ? navisionCardNames[id] : string.Empty);
+        }
+
+        //>>EGE-62049 : CCE - Use Navision webservice to return Payment means
+        /// <summary>
+        /// Return short card type from Navision card type
+        /// </summary>
+        /// <param name="navisionCardType">NNavision card type</param>
+        /// <returns>Short card type</returns>
+        public static string GetShortCardTypeFromNavisionCardType(string navisionCardType)
+        {
+            int nr=navisionCardNames.Length;
+
+            for (int i = 0; i < nr;i++)
+            {
+                if(String.Compare(navisionCardType, navisionCardNames[i], true) == 0)
+                {
+                    return shortNames[i];
+                }
+            }
+            return string.Empty;
+        }
+        //<<EGE-62049 : CCE - Use Navision webservice to return Payment means
+
+        //--> EGE-62034 : Revamp - CCE - Change Financial flow update
+        /*
+        /// <summary>
+        /// Retourne le partenaire de paiement
+        /// pour les transactions Merchant
+        /// </summary>
+        /// <param name="user">Compte utilisateur</param>
+        /// <param name="pos">Marché</param>
+        /// <param name="id">Position du type de carte</param>
+        /// <param name="cardNumber">Numéro de carte</param>
+        /// <param name="getMerchantPaymentProvider">Récupérer le partenaire pour les paiements merchant</param>
+        /// <returns>Nom du partenaire</returns>
+        public static string GetNavisionCardLabel(UserInfo user, string pos, int id, string cardNumber
+            , bool getMerchantPaymentProvider)
+        {
+
+            if(!getMerchantPaymentProvider) 
+            {
+                // On ne souhaite pas retourner le partenaire
+                // des paiement merchant
+                return string.Empty;
+            }
+            
+            // On récupère le POS
+            string realPos = pos;
+
+            if (!String.IsNullOrEmpty(realPos))
+            {
+                // On corrige le POS
+                realPos = Util.CorrectPos(realPos);
+            }
+
+            if (IsBankcardLabel(realPos, cardNumber))
+            {
+                // C'est une carte BANKCARD
+                return CardLabel_BANKCARD;
+            }
+
+
+            // Récupération du type de carte depuis Navision 
+            // On récupère le type de carte Navision
+            string cardType = (id > Invalid && id < navisionCardNames.Length ? navisionCardNames[id] : string.Empty);
+
+
+            // maintenant, il faut aller dans Navision et récuperer le partenaire qui
+            // prend en charge le type de carte
+            return Services.GetCardProvider(user, realPos, cardType);
+        }
+        */
+        //<-- EGE-62034 : Revamp - CCE - Change Financial flow update
+
+        public static string GetCvc(int id)
+        {
+            return (id > Invalid && id < cvcs.Length ? cvcs[id] : string.Empty);
+        }
+        
+        public static string GetCardName(int id)
+        {
+            return (id > Invalid && id < cardNames.Length ? cardNames[id] : null);
+        }
+        public static string GetShortCardName(int id)
+        {
+            return (id > Invalid && id < shortNames.Length ? shortNames[id] : null);
+        }
+
+        public static string GetNotValidCardNames(int id)
+        {
+            return (id > Invalid && id < cardNames.Length ? cardNames[id] : null);
+        }
+
+
+        /// <summary>
+        /// Vérifie si la chaine en entrée
+        /// est un numero de carte bancaire
+        /// ATTENTION, cette fonction verifie uniquement
+        /// si le numero de carte est non digit
+        /// </summary>
+        /// <param name="cardNumber">Numero de carte</param>
+        /// <returns>True ou False</returns>
+        private static bool IsInvalidRegEx(string cardNumber)
+        {
+            // On ne crée qu'une seule fois l'instance Regex
+            if (regCC == null)
+            {
+                // L'instance n'existe pas
+                // On la créée
+                regCC = new Regex("[^\\d\\s.-]");
+            }
+            return regCC.IsMatch(cardNumber);
+        }
+
+        /// <summary>
+        /// Vérification du numéro de carte bancaire
+        /// </summary>
+        /// <param name="user">Compte utilisateur</param>
+        /// <param name="cardHolder">Numéro de carte</param>
+        /// <param name="expirationDate">Date d'expiration</param>
+        /// <param name="onlineCheck">Tester la carte via RBS</param>
+        /// <param name="cardHolder">Détenteur de la carte</param>
+        /// <param name="pos">Marché</param>
+        /// <param name="timeout">timeout</param>
+        /// <param name="service">service</param>
+        /// <param name="customercode">code client</param>
+        /// <param name="travellercode">code voyageur</param>
+        /// <param name="token">code token</param>
+        /// <param name="lodgedCard">Flag lodged card or not</param>
+        /// <param name="firstCardReference">First card  reference</param>
+        /// <returns>ReturnIndicator</returns>
+        public static CardInfos CheckCardNumber(UserInfo user, string cardnumber, DateTime expirationDate,
+            bool onlineCheck, string cardHolder, string pos, int timeout, string service, string customercode,
+           // string travellercode, string token, bool getMerchantPaymentProvider, int lodgedCard)
+            string travellercode, string token, bool getMerchantPaymentProvider, int lodgedCard, string firstCardReference)        
+        {
+            // On va valider cette carte
+            CardInfos ri = new CardInfos();
+
+            if (onlineCheck)
+            {
+                // On demande une vérification
+                // depuis le service en ligne
+                ri.SetOnlineCheckRequested(onlineCheck);
+            }
+
+            //--> EGE-62034 : Revamp - CCE - Change Financial flow update
+            if (lodgedCard == 1)
+            {
+                ri.SetNavisionLodgedCard();
+            }
+            //<-- EGE-62034 : Revamp - CCE - Change Financial flow update
+
+            // On gère les rejets classiques
+            if (String.IsNullOrEmpty(cardnumber))
+            {
+                // Pan vide
+                ri.SetUnValidMsg(user, user.GetMessages().GetString("EmptyPAN", true));
+                return ri;
+            }
+            if (cardnumber.Length < MinimalLength)
+            {
+                // Pan trop court
+                ri.SetUnValidMsg(user, user.GetMessages().GetString("UnvalidPAN", cardnumber, true));
+                return ri;
+            }
+
+            if (IsInvalidRegEx(cardnumber))
+            {
+                // Pan non digits
+                ri.SetUnValidMsg(user, user.GetMessages().GetString("PANNotDigits", cardnumber, true));
+                return ri;
+            }
+
+            // On va essayer de déterminer le type de carte
+            // grace au numéro de la carte
+            int cardId = GetCardID(cardnumber);
+
+            if(cardId == Invalid) 
+            {
+                // On ne connait pas ce type de carte
+                ri.SetUnValidMsg(user, user.GetMessages().GetString("UnknownCardType", true));
+                return ri;
+            }
+
+            // On garde en mémoire le numéro de carte
+            ri.SetCardNumber(cardnumber);
+
+            // On a déterminé le type de carte
+            // allons maintenant vérifier si cette carte
+            // est valide en effectuant un contrôle de Luhn
+            if (!LuhnValidate(user, cardnumber)) 
+            {
+                // Cette carte est invalide
+                ri.SetUnValidMsg(user, user.GetMessages().GetString("UnvalidPAN", ri.GetTruncatedPAN(), true));
+                return ri;
+            }
+
+            
+            // A-t-on besoin de vérifier la date d'expiration
+            if (!Util.IsEmptyDate(expirationDate))
+            {
+                DateTime now = DateTime.Today;
+
+                // On doit vérifier la date d'expiration
+                if (now > expirationDate)
+                {
+                    // Cette carte a expiré
+                    ri.SetUnValidMsg(user, user.GetMessages().GetString("ExpiredPAN", ri.GetTruncatedPAN(), true));
+                    return ri;
+                }
+
+                // La date d'expiration ne peut aller au dela
+                // de 10 ans
+                if(Util.DateDiffInYears(now, expirationDate)>10)
+                {
+                    // La date d'expiration est invalide
+                    ri.SetUnValidMsg(user, user.GetMessages().GetString("InvalidExpirationDate", Util.GetShortExpirationDate(expirationDate), true));
+                    return ri;
+                }
+
+                // La carte n'a pas encore expirée
+                ri.SetExpirationDate(expirationDate);
+            }
+
+            ri.SetCardType(GetCardName(cardId));
+            ri.SetShortCardType(GetShortCardName(cardId));
+            ri.SetNavisionCardType(GetNavisionCardType(cardId));
+            //--> EGE-62034 : Revamp - CCE - Change Financial flow update
+            ri.SetNavisionCardName(GetNavisionCardName(cardId));
+            //<-- EGE-62034 : Revamp - CCE - Change Financial flow update
+
+            // Nous allons vérifier si ce type de carte est supporté
+            // par Navision
+            // car toute carte d'une manière ou une autre finie
+            // dans Navision
+            if (!ri.IsNavisionSupportedCardType())
+            {
+                // navision ne supporte pas ce type de carte
+                // On ne peut pas continuer!
+                ri.SetUnValidMsg(user, user.GetMessages().GetString("CardTypeNotAllowedByNavision", ri.GetTruncatedPAN(), ri.GetCardType(), true));
+                return ri;
+            }
+
+            // La carte est valide
+            ri.SetCardValid(true);
+            //--> EGE-62034 : Revamp - CCE - Change Financial flow update
+            ri.SetPOS(Util.CorrectPos(pos));
+            //<-- EGE-62034 : Revamp - CCE - Change Financial flow update
+
+            //>> EGE-79826 - [BO] Lodge Card - First card Enhancement
+            ri.SetFirstCardReference(firstCardReference);
+            //<< EGE-79826 - [BO] Lodge Card - First card Enhancement
+
+            ri.SetCvc(GetCvc(cardId));
+            ri.SetTruncatedPAN(TruncatePan(cardnumber));
+            ri.SetMII(cardnumber);
+            ri.SetMIIIssuerCategory(GetMIIIssuerCategory(cardId));
+            ri.SetCustomerCode(customercode);
+           
+            switch (cardId)
+            {
+                case AmericanExpress: ri.SetNavisionPaymentBTA(); break;
+                case Airplus: ri.SetNavisionPaymentAirPlus(); break;
+                //case DinersClub         : ri.SetNavisionPaymentDiners()   ; break;
+                default: break;
+            }
+
+            // On assigne le nom du partenaire pour les paiements merchant
+            //--> EGE-62034 : Revamp - CCE - Change Financial flow update
+            //ri.SetNavisionCardLabel(GetNavisionCardLabel(user, pos, cardId, cardnumber, getMerchantPaymentProvider));
+            if (getMerchantPaymentProvider)
+            {
+                // Get merchant and enhanced providers
+                NavServiceUtils.SetFinancialAndEnhancedFlows(ri);
+            }
+            //<-- EGE-62034 : Revamp - CCE - Change Financial flow update
+ 
+
+            //--> EGE-62034 : Revamp - CCE - Change Financial flow update
+            //ri.SetPOS(Util.CorrectPos(pos));
+            //<-- EGE-62034 : Revamp - CCE - Change Financial flow update
+
+     
+            // Cette carte est valide
+            // Si c'est une carte supportée par 99Bill, alors
+            // il faut appeler le service de validation
+            // Si c'est une carte BIBIT alors, il faut
+            // vérifier via le service RBS si nécéssaire
+            if (!ri.IsCallOnLineValidationForSure(user)) 
+             {
+                 // On n'a pas besoin de valider en ligne cette carte
+                 return ri;
+             }
+
+    
+             // C'est une carte BIBIT, nous devons donc effectuer une vérification
+             // depuis le service RBS
+             
+             // On complète les informations
+             ri.SetService(service);
+             ri.SetTravellerCode(travellercode);
+             ri.SetHolderName(cardHolder);
+             ri.SetToken(token);
+
+             // Mais avant de procéder, il est nécéssaire de vérifier si une vérification n'a pas été faite
+             // les 24 dernières heures
+             // pour cela, nous devons disposer du cryptogramme lors de la recherche dans le cache
+
+             bool CheckCacheInFO = false;
+
+
+             if (BibitVerifier.RBSRequestCacheOn)
+             {
+                 // En fonction de la méthode d'appel,nous n'allons
+                 // pas utiliser le même serveur d'encryption
+                 switch (user.GetApplication())
+                 {
+                     case UserInfo.APPLICATION_FO_TOKENIZATION:
+                     case UserInfo.APPLICATION_CREDIT_CARD_VALIDATION:
+                         ri.SetEncryptedPan(Services.EncryptFOCard(user, ri.GetCardNumber()));
+                         CheckCacheInFO = true;
+                         break;
+                     default:
+                         ri.SetEncryptedPan(Services.EncryptBOCard(user, ri.GetCardNumber()));
+                         break;
+                 }
+
+                 CachedValidationResult cache = null;
+
+                 // On a le cryptogramme du PAN
+                 // Nous allons maintenant lire le cache...
+                 if (CheckCacheInFO)
+                 {
+                     cache = Services.GetCachedFOBibitResponse(user, ri.GetEncryptedPan());
+                 }
+                 else
+                 {
+                     cache = Services.GetCachedBibitResponse(user, ri.GetEncryptedPan());
+                 }
+
+                 if (cache.GetStatus() == CachedValidationResult.CacheStatus.FoundValid)
+                 {
+                     // La carte a déjà été validée
+                     ri.SetBibitValidFromCache(true);
+                     ri.SetBibitValidFromCacheDate(cache.GetLastAccessTime());
+                     return ri;
+                 }
+             }
+
+            // Nous devons valider via le service en ligne
+            ProviderVerifierResult br = CheckCard(user, ri, cardId, timeout);
+
+            if (br == null)
+            {
+                // We cannot find provider to validate the credit card
+                // We have to stop here
+                return ri;
+            }
+
+            if (!br.IsSuccess())
+            {
+                // credit card is unvalid
+                ri.SetCardValid(false);
+                ri.SetUnValidMsg(user, br.GetOrderCode(), br.GetInformationMessage(),
+                    br.GetCompleteResponse(), 
+                    user.GetMessages().GetString("Bibit.RejectedCard", ri.GetTruncatedPAN(), false) 
+                    + (ri.Is99Bill()? " " + br.GetInformationMessage():string.Empty));
+
+                return ri;
+            }
+
+            // La carte est valide
+            // ou on a eu un soucis de Timeout
+            // ou d'erreurs au niveau du service de validation
+            ri.SetInformationCode(br.GetInformationCode());
+            ri.SetInformationMessage(br.GetInformationMessage());
+
+            if (br.GetInformationCode() != null)
+            {
+                // On va tracer cette erreur dans la table des traces des carte rejetées
+                // typiquement un soucis de timeout
+                Services.LogRejectedCreditCard(user, ri, br.GetOrderCode(), br.GetInformationCode(),
+                    br.GetInformationMessage(), br.GetCompleteResponse());
+
+                return ri;
+            }
+                  
+            // La carte a été validée via RBS
+            if (BibitVerifier.RBSRequestCacheOn)
+            {
+                // On va mettre en cache cet état
+                if (CheckCacheInFO)
+                {
+                    // dans le cache du Front Office
+                    Services.CacheFOBibitResponseStatus(user, ri.GetEncryptedPan());
+                }
+                else
+                {
+                    // dans le cache du BackOffice
+                    Services.CacheBibitResponseStatus(user, ri.GetEncryptedPan());
+                }
+            }
+
+            return ri;
+        }
+
+
+        /// <summary>
+        /// The Luhn algorithm is basically a CRC type
+        /// system for checking the validity of an entry.
+        /// All major credit cards use numbers that will
+        /// pass the Luhn check. Also, all of them are based on MOD 10.
+        /// </summary>
+        /// <param name="user">Compte utilisateur</param>
+        /// <param name="numberstring">Numéro de carte bancaire</param>
+        /// <returns>Résultat control (VRAI ou FAUX)</returns>
+        private static bool LuhnValidate(UserInfo user, string numberstring)
+        {
+            bool isvalid = false;
+            try
+            {
+                isvalid = (Util.CalculChecksum(user, numberstring) % 10) == 0;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(user.GetMessages().GetString("LunhValidateError", e.Message, true));
+            }
+            return isvalid;
+        }
+
+
+        /// <summary>
+        /// Retourne le type de carte depuis depuis
+        /// le numéro de carte
+        /// </summary>
+        /// <param name="number">Numéro de carte</param>
+        /// <returns>Type de carte</returns>
+        public static int GetCardID(string number)
+        {
+            int valid = Invalid;
+
+            string digit1 = number.Substring(0, 1);
+            string digit2 = number.Substring(0, 2);
+            string digit3 = number.Substring(0, 3);
+            string digit4 = number.Substring(0, 4);
+            string digit6 = number.Substring(0, 6);
+            string digit8 = number.Substring(0, 8);
+
+            if (Util.IsNumeric(number))
+            {
+                /* ----
+                ** SWITCH card prefix = 4903,4905,4911,4936,564182,633110,6333,6759
+                ** --------      lenght = 16,18,19
+                */
+                if (digit4.Equals("4903") || digit4.Equals("4905")
+                    || digit4.Equals("4911") || digit4.Equals("4936")
+                    || digit6.Equals("564182") || digit6.Equals("633110")
+                    || digit4.Equals("6333") || digit4.Equals("6759"))
+                {
+                    if (number.Length == 16 || number.Length == 18 || number.Length == 19)
+                        valid = Switch;
+                }
+                /* ----
+                ** LASER card prefix = 6304, 6706, 6771, 6709
+                ** --------     
+                */
+
+                else if (digit4.Equals("6304") || digit4.Equals("6706")
+                         || digit4.Equals("6771") || digit4.Equals("6709"))
+                {
+                    if (number.Length >= 16 && number.Length <= 19)
+                    {
+                        valid = Laser;
+                    }
+                }
+                /* ----
+                ** VISA  prefix=4
+                ** ----  length=13 or 16  (can be 15 too!?! maybe)
+                */
+                else if (digit1.Equals("4"))
+                {
+                    if (number.Length == 13 || number.Length == 16)
+                        valid = Visa;
+                }
+                /* ----------
+                ** MASTERCARD  prefix= 51 ... 55
+                ** ----------  length= 16
+                */
+                else if ((string.Compare(digit2,"51") >= 0 && string.Compare(digit2,"55") <= 0) || digit4.Equals("5899"))
+                {
+                    if (number.Length == 16)
+                        valid = Mastercard;
+                }
+
+                /* ----
+                ** AMEX  prefix=34 or 37
+                ** ----  length=15
+                */
+                else if (digit2.Equals("34") || digit2.Equals("37"))
+                {
+                    if (number.Length == 15)
+                        valid = AmericanExpress;
+                }
+                /* -----
+                ** ENROU prefix=2014 or 2149
+                ** ----- length=15
+                */
+                else if (digit4.Equals("2014") || digit4.Equals("2149"))
+                {
+                    if (number.Length == 15)
+                        valid = EnRoute;
+                }
+                /* -----
+                ** DCLUB prefix=300 ... 305 or 36 or 38
+                ** ----- length=14
+                */
+                else if (digit2.Equals("36") || digit2.Equals("38") ||
+                  (string.Compare(digit3,"300") >= 0 && string.Compare(digit3,"305") <= 0))
+                {
+                    if (number.Length == 14)
+                        valid = DinersClub;
+                }
+
+                /* ----
+                ** DISCOVER card prefix = 6011
+                ** --------      lenght = 16
+                */
+                else if (digit4.Equals("6011"))
+                {
+                    if (number.Length == 16)
+                        valid = Discover;
+                }
+
+                 /*
+                 * 
+                Start		End		Issuing Network
+
+                60110000	60110999	DN
+                60112000	60114999	DN
+                60117400	60117499	DN
+                60117700	60117999	DN
+                60118600	60119999	DN
+
+                62212600	62292599	CUP
+                62400000	62699999	CUP
+                62820000	62889999	CUP
+
+                64400000	65999999	DN
+                 *  
+                 *  card number count in between 16-19.
+                 * */
+                else if (digit2.Equals("62"))
+                {
+
+                    if (string.Compare(digit8, "62212600") >= 0 && string.Compare(digit8, "62292599") <= 0
+                        || string.Compare(digit8, "62400000") >= 0 && string.Compare(digit8, "62699999") <= 0
+                        || string.Compare(digit8, "62820000") >= 0 && string.Compare(digit8, "62889999") <= 0)
+                    {
+                        if (number.Length >= 16 && number.Length <= 19)
+                        {
+                            valid = ChinaUnionPay;
+
+                        }
+                    }
+                }
+
+
+                /* ----
+                ** JCB1 card prefix = 3
+                ** --------      lenght = 16
+                */
+                else if (digit1.Equals("3"))
+                {
+                    if (number.Length == 16)
+                        valid = Jcb1;
+                }
+                /* ----
+                ** JCB2 card prefix = 2131, 1800
+                ** --------      lenght = 15
+                */
+                else if (digit4.Equals("2131") || digit4.Equals("1800"))
+                {
+                    if (number.Length == 15)
+                        valid = Jcb2;
+                }
+                /* ----
+                 ** BANKCARD card prefix = 56
+                 ** --------      lenght = 16
+                 */
+                else if (digit2.Equals("56"))
+                {
+                    if (number.Length == 16)
+                        valid = Bankcard;
+                }
+                /* ----
+                 ** MAESTRO card prefix = 5020,6
+                 ** --------      lenght = 16
+                 */
+                else if (digit4.Equals("5020") || digit1.Equals("6"))
+                {
+                    if (number.Length == 16)
+                        valid = Maestro;
+                }
+                /* ----
+                 ** SOLO card prefix = 6334, 6767
+                 ** --------      lenght = 16,18,19
+                 */
+                else if (digit4.Equals("6334") || digit4.Equals("6767"))
+                {
+                    if (number.Length == 16 || number.Length == 18 || number.Length == 19)
+                        valid = Solo;
+                }
+
+                /* ----
+                ** AIRLUS card prefix = 192, 122
+                ** --------     
+                */
+                else if (digit3.Equals("192") || digit3.Equals("122") || digit3.Equals("108"))
+                {
+                    valid = Airplus;
+                }
+                /* ----
+                 ** VOYAGER card prefix = 8699
+                 ** --------      lenght = 15
+                 */
+                else if (digit4.Equals("8699"))
+                {
+                    if (number.Length == 15)
+                        valid = Voyager;
+                }
+            }
+
+            return valid;
+        }
+
+
+        /// <summary>
+        /// Masque un numéro de carte de crédit
+        /// Cette fonction permet de masquer certains 
+        /// caractères au sein d'un PAN
+        /// Ne seront affiché uniquement que les
+        /// 6 premiers et 4 derniers
+        /// 123456XXXXXX1234
+        /// </summary>
+        /// <param name="pan">Numéro de carte</param>
+        /// <returns>Numéro de carte masqué</returns>
+        public static string TruncatePan(string pan)
+        {
+            if (String.IsNullOrEmpty(pan)) return pan;
+
+            StringBuilder truncatedPAN = new StringBuilder();
+            int limit = pan.Length - 4;
+            char truncatedPANMask = ConfigurationManager.AppSettings["TruncatedPANMask"].ToCharArray()[0];
+            for (int i = 0; i < pan.Length; i++)
+            {
+                char c = pan[i];
+                if (i > 5 && i < limit)
+                {
+                    c = truncatedPANMask;
+                }
+                truncatedPAN.Append(c);
+            }
+            return truncatedPAN.ToString();
+        }
+
+
+
+        /// <summary>
+        /// Permet d'indiquer si une carte doit
+        /// passer par le flux de paiement BankCard
+        /// Ces cartes doivent avoir les prefixes suivants
+        /// 547539
+        /// 58799
+        /// 512593
+        /// 439079
+        /// 485778
+        /// et uniquement en BELGIQUE
+        /// </summary>
+        /// <param name="pos">Marché</param>
+        /// <param name="cardNumber">Numéro de carte</param>
+        /// <returns>TRUE ou FALSE</returns>
+        private static bool IsBankcardLabel(string pos, string cardNumber)
+        {
+            if (String.IsNullOrEmpty(pos)) return false;
+
+            if (!pos.Equals(Const.PosBelgium)) return false;
+
+            // On récupère depuis le fichier des options les préfixes qui
+            // définissent une carte de flux BankCard
+            string prefixs=ConfigurationManager.AppSettings["BankcardLabelPrefixs"];
+            if (String.IsNullOrEmpty(prefixs))
+            {
+                return false;
+            }
+
+            // on va décomposer les prefixes
+            string[] prefixsList = prefixs.Split(',');
+            int nr = prefixsList.Length;
+
+            for (int i = 0; i < nr; i++)
+            {
+                // On a  un prefix
+                string prefix = prefixsList[i].Trim();
+                if(!String.IsNullOrEmpty(prefix))
+                {
+                    // On va le comparer avec le numéro de carte
+                    if (cardNumber.StartsWith(prefix))
+                    {
+                        // On a visiblement à faire avec une carte
+                        // qui va passer par le flux de paiement Bankcard
+                        // On peut s'arrêter ici
+                        return true;
+                    }
+                }
+            }
+
+
+            return false;
+        }
+
+
+        /// <summary>
+        /// Vérification du Code de sécurité de la carte
+        /// </summary>
+        /// <param name="user">Compte utilisateur</param>
+        /// <param name="card">Informations carte</param>
+        /// <param name="csc">CSV</param>
+        public static void IsValidCSC(UserInfo user, CardInfos card, string csc)
+        {
+            // Vérifions le csc
+            if(String.IsNullOrEmpty(csc))
+            {
+                // Le csc est vide!
+                // On s'arrête la
+                throw new Exception(user.GetMessages().GetString("EmptyCSC", true));
+            }
+
+            // Le csc a été renseigné, on va le vérifier plus en détail
+            if (!Util.IsDigit(csc))
+            {
+                // Le csc doit être numérique
+                throw new Exception(user.GetMessages().GetString("NotNumericCSC", true));
+            }
+
+            // On va valider le CSC en fonction du type de carte
+            switch (card.GetNavisionCardType())
+            {
+                case CreditCardVerifier.NavisionCardTypeVisa:
+                case CreditCardVerifier.NavisionCardTypeEurocardMastercard:
+                    // CVV2
+                    // 3 chiffres
+                    if (csc.Length != 3)
+                    {
+                        throw new Exception(user.GetMessages().GetString("InvalidCSCLenght", true));
+                    }
+                    break;
+                case CreditCardVerifier.NavisionCardTypeAmericanExpress:
+                    // CID
+                    // 4 chiffres
+                    if (csc.Length != 4)
+                    {
+                        throw new Exception(user.GetMessages().GetString("InvalidCSCLenght", true));
+                    }
+                    break;
+                default:
+
+                    break;
+            }
+
+
+        }
+
+
+        /// <summary>
+        /// Check credit card with online API
+        /// provided by partners
+        /// </summary>
+        /// <param name="user">User</param>
+        /// <param name="ri">Credit card</param>
+        /// <param name="cardId">Creadit card id</param>
+        /// <param name="timeout">Time out</param>
+        /// <returns>Credit card validation result</returns>
+        private static ProviderVerifierResult CheckCard(UserInfo user, CardInfos ri, int cardId
+            , int timeout)
+        {
+
+            if (ri.Is99Bill())
+            {
+                // Validation 99Bill
+                // Allons vérifier en ligne la validité de cette carte
+                // et récupérons la réponse
+                return _99BillVerifier.CheckCard(user, ri, timeout);
+            }
+            
+            if (ri.isBIBIT())
+            {
+                // Validation RBS
+                ri.SetRBSPaymentMethod(GetRBSPaymentMethod(cardId));
+                // Allons vérifier en ligne la validité de cette carte
+                // et récupérons la réponse
+                return BibitVerifier.CheckCard(user, ri, timeout);
+            }
+
+            // No need to validate credit card with online API
+            return null;
+        }
+    
+    }
+}

@@ -1,0 +1,156 @@
+﻿//==================================================================== 
+// Credit Card Encryption/Decryption Tool
+// 
+// Copyright (c) 2009-2014 Egencia.  All rights reserved. 
+// This software was developed by Egencia An Expedia Inc. Corporation
+// La Defense. Paris. France
+// The Original Code is Egencia 
+// The Initial Developer is Samatar Hassan.
+//
+//===================================================================
+
+using System;
+using System.Net;
+using System.Configuration;
+using SafeNetWS.creditcard.creditcardvalidator;
+using SafeNetWS.www;
+using SafeNetWS.utils.crypting;
+using SafeNetWS.login;
+using SafeNetWS.business;
+using SafeNetWS.log;
+using SafeNetWS.utils;
+
+namespace SafeNetWS.creditcard.creditcardvalidator.bibit
+{
+    public class BibitVerifier
+    {
+        // Paramètres de l'appel au service web RBS
+        public static string RBSServiceUrl = ConfigurationManager.AppSettings["RBSServiceUrl"];
+        public static string RBSServiceLogin = ConfigurationManager.AppSettings["RBSUsername"];
+        public static string RBSServicePassword = EncDec.DecryptPassword(ConfigurationManager.AppSettings["RBSPassword"]);
+        public static string RBSRequestDescription = ConfigurationManager.AppSettings["RBSRequestDescription"];
+        public static string RBSRequestDefaultHolderName = ConfigurationManager.AppSettings["RBSRequestDefaultHoldername"];
+        public static string RBSRequestSessionId = ConfigurationManager.AppSettings["RBSRequestSessionId"];
+        public static string RBSRequestShopperIPAddress = ConfigurationManager.AppSettings["RBSRequestShopperIPAddress"];
+        // Time out (secondes) par défaut pour la création des cartes depuis les procédures BO
+        public static string RBSRequestBODefaultTimeOut = ConfigurationManager.AppSettings["RBSRequestBODefaultTimeOut"];
+
+        // Activation Validation en ligne des cartes BIBIT
+        public static bool RBSRequestOn = Util.IsOptionOn("RBSRequestActivate");
+        // Activation Validation en ligne des cartes BIBIT pour les application BO
+        public static bool RBSRequestBOOn = Util.IsOptionOn("RBSRequestActivateForBO");
+        // Activation cache Bibit
+        public static bool RBSRequestCacheOn = Util.IsOptionOn("RBSRequestUseCache");
+
+
+
+        /// <summary>
+        /// Vérification des cartes BIBIT
+        /// via un service RBS (Royal Bank of Scotland)
+        /// </summary>
+        /// <param name="user">Compte utilisateur</param>
+        /// <param name="card">Informations carte</param>
+        /// <param name="timeOut">Timeout (s)</param>
+        /// <returns>BibitVerifierResult</returns>
+        public static ProviderVerifierResult CheckCard(UserInfo user, CardInfos card, int timeOut)
+        {
+            ProviderVerifierResult retval = new ProviderVerifierResult();
+            if (!card.isBIBIT())
+            {
+                // Ce n'est pas une carte BIBIT
+                // On ne pourra donc pas la vérifier via ce service
+                return retval;
+            }
+
+
+            try
+            {
+                // Construction de la requête
+                RBSPaymentServiceRequest rs = new RBSPaymentServiceRequest(card);
+
+                // Appel du service et récupération de la réponse
+                string response = HttpUtil.HttpPost(user, RBSServiceUrl, RBSServiceLogin, RBSServicePassword, rs.GetXML(), timeOut);
+ 
+                // Traitement de la réponse
+                RBSPaymentServiceResponse res = new RBSPaymentServiceResponse(response);
+
+                // et retour du statut
+                // on va egalement retourner la réponse entière du service RBS
+                // de plus on ajoute le numéro de la transaction
+                retval.SetSuccess(res.isSuccess());
+                retval.SetCompleteResponse(res.GetInputResponse());
+                retval.SetOrderCode(rs.GetOrderCode());
+                
+            }
+            catch (WebException ex)
+            {
+                // Récupération de l'exception
+                string code = Const.StatusConnectionError;
+                if (ex.Status.Equals(WebExceptionStatus.Timeout))
+                {
+                    // On a eu un timeout
+                    // il faut tracer cette erreur dans une table
+                    // avant de lever l'exception
+                    code = Const.StatusTimeOut;
+                }
+                retval.SetInformationCode(code);
+                retval.SetInformationMessage(ex.Message);
+            }
+            catch (Exception e)
+            {
+                // Erreur lors de la vérication de la carte
+                // via le service RBS
+                // L'erreur peut être un TimeOut
+                // Dans tous les cas, on doit ignorer cette exception
+                // et informer le client que la carte est valide
+
+                retval.SetInformationCode(Const.StatusConnectionError);
+                retval.SetInformationMessage(e.ToString());
+            }
+            return retval;
+        }
+
+
+        /// <summary>
+        /// Vérification des cartes BIBIT
+        /// via un service RBS (Royal Bank of Scotland)
+        /// </summary>
+        /// <param name="user">Compte utilisateur</param>
+        /// <param name="card">Informations carte</param>
+        /// <returns>BibitVerifierResult</returns>
+        public static ProviderVerifierResult CheckCard(UserInfo user, CardInfos card)
+        {
+            return CheckCard(user, card, HttpUtil.NoTimeOut);
+        }
+
+
+        /// <summary>
+        /// Méthode de vérification de la connectivité RBS
+        /// On soumet la validation pour une carte fictive
+        /// </summary>
+        /// <param name="user">Compte utilisateur</param>
+        public static void CheckBibitVerifier(UserInfo user)
+        {
+            try
+            {
+                // Construction de la requête
+                // Les valeurs sont fictives
+                RBSPaymentServiceRequest rs = new RBSPaymentServiceRequest("FRANCE", "4111111111111111",
+                    DateTime.Now.AddYears(2), string.Empty, "VISA");
+
+                // Appel du service et récupération de la réponse
+                string response = HttpUtil.HttpPost(user, RBSServiceUrl, RBSServiceLogin
+                    , RBSServicePassword, rs.GetXML(), HttpUtil.NoTimeOut);
+
+                // L'appel a été fait avec succes
+                // pas besoin de connaitre si la carte a été acceptée ou rejectée!
+                // On a juste de tester la connectivité
+            }
+            catch (Exception e)
+            {
+                // Erreur lors de l'appel
+                throw new Exception(e.Message);
+            }
+        }
+    }
+}

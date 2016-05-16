@@ -1,0 +1,225 @@
+!SESSION 2016-05-10 15:29:20.685 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_79
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-05-10 15:30:45.728
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\nishanth.m'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:35:51.375
+!MESSAGE Failure to transfer org.codehaus.mojo:jaxws-maven-plugin/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata org.codehaus.mojo:jaxws-maven-plugin/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): nexus.expediacorporate.eu
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:35:52.603
+!MESSAGE The artifact javax.xml:jaxb-api:jar:2.1 has been relocated to javax.xml.bind:jaxb-api:jar:2.1
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:35:52.896
+!MESSAGE Failure to transfer org.codehaus.mojo:jaxws-maven-plugin/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata org.codehaus.mojo:jaxws-maven-plugin/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): nexus.expediacorporate.eu
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:35:59.534
+!MESSAGE The POM for com.sun.xml.ws:jaxws-tools:jar:2.2.9-b14002 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:00.131
+!MESSAGE cannot find file for junit:junit:4.8.2
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:00.131
+!MESSAGE cannot find file for org.springframework:spring-test:3.0.5.RELEASE
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:00.132
+!MESSAGE cannot find file for uk.co.jemos.podam:podam:3.0.2.RELEASE
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:00.135
+!MESSAGE Using platform encoding (Cp1252), build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:01.106
+!MESSAGE The artifact javax.xml:jaxb-api:jar:2.1 has been relocated to javax.xml.bind:jaxb-api:jar:2.1
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:01.146
+!MESSAGE cannot find file for junit:junit:4.8.2
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:01.147
+!MESSAGE cannot find file for javax.xml:jaxb-api:2.1
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:01.147
+!MESSAGE cannot find file for org.springframework:spring-test:3.0.5.RELEASE
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:01.148
+!MESSAGE cannot find file for org.mockito:mockito-all:1.9.0
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:01.149
+!MESSAGE cannot find file for uk.co.jemos.podam:podam:3.0.2.RELEASE
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:01.151
+!MESSAGE Using platform encoding (Cp1252), build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:06.575
+!MESSAGE Failure to transfer org.codehaus.mojo:jaxws-maven-plugin/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata org.codehaus.mojo:jaxws-maven-plugin/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): nexus.expediacorporate.eu
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:06.799
+!MESSAGE cannot find file for junit:junit:4.8.2
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:06.800
+!MESSAGE cannot find file for org.springframework:spring-test:3.0.5.RELEASE
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:06.800
+!MESSAGE cannot find file for uk.co.jemos.podam:podam:3.0.2.RELEASE
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:06.802
+!MESSAGE Using platform encoding (Cp1252), build is platform dependent!
+
+!ENTRY org.eclipse.wst.xml.core 4 4 2016-05-10 15:36:08.694
+!MESSAGE error loading catalog: system_catalog file:C:/Users/nishanth.m/Documents/bo-webapp-safenetws/.metadata/.plugins/org.eclipse.wst.xml.core/system_catalog.xml
+!STACK 0
+java.lang.IllegalArgumentException: Illegal group reference
+	at java.util.regex.Matcher.appendReplacement(Unknown Source)
+	at java.util.regex.Matcher.replaceFirst(Unknown Source)
+	at java.lang.String.replaceFirst(Unknown Source)
+	at org.eclipse.wst.xml.core.internal.catalog.CatalogContributorRegistryReader.resolvePath(CatalogContributorRegistryReader.java:115)
+	at org.eclipse.wst.xml.core.internal.catalog.CatalogContributorRegistryReader.resolvePath(CatalogContributorRegistryReader.java:141)
+	at org.eclipse.wst.xml.core.internal.catalog.CatalogContributorRegistryReader.processMappingInfoElements(CatalogContributorRegistryReader.java:215)
+	at org.eclipse.wst.xml.core.internal.catalog.CatalogContributorRegistryReader.readElement(CatalogContributorRegistryReader.java:161)
+	at org.eclipse.wst.xml.core.internal.catalog.CatalogContributorRegistryReader.readRegistry(CatalogContributorRegistryReader.java:72)
+	at org.eclipse.wst.xml.core.internal.catalog.Catalog$SystemCatalogLS.load(Catalog.java:391)
+	at org.eclipse.wst.xml.core.internal.catalog.Catalog.load(Catalog.java:654)
+	at org.eclipse.wst.xml.core.internal.catalog.CatalogSet.lookupOrCreateCatalog(CatalogSet.java:41)
+	at org.eclipse.wst.xml.core.internal.catalog.NextCatalog.getReferencedCatalog(NextCatalog.java:42)
+	at org.eclipse.wst.xml.core.internal.catalog.Catalog.resolveSubordinateCatalogs(Catalog.java:724)
+	at org.eclipse.wst.xml.core.internal.catalog.Catalog$InternalResolver.resolveSystem(Catalog.java:295)
+	at org.eclipse.wst.xml.core.internal.catalog.Catalog.resolveSystem(Catalog.java:753)
+	at org.eclipse.wst.xml.core.internal.catalog.XMLCatalogURIResolverExtension.resolve(XMLCatalogURIResolverExtension.java:46)
+	at org.eclipse.wst.common.uriresolver.internal.ExtensibleURIResolver.resolve(ExtensibleURIResolver.java:85)
+	at org.eclipse.wst.xml.core.internal.validation.ValidatorHelper$MyContentHandler.startElement(ValidatorHelper.java:286)
+	at org.apache.xerces.parsers.AbstractSAXParser.startElement(Unknown Source)
+	at org.apache.xerces.impl.dtd.XMLDTDValidator.startElement(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanStartElement(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentScannerImpl$ContentDispatcher.scanRootElementHook(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl$FragmentContentDispatcher.dispatch(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XMLParser.parse(Unknown Source)
+	at org.apache.xerces.parsers.AbstractSAXParser.parse(Unknown Source)
+	at org.eclipse.wst.xml.core.internal.validation.ValidatorHelper.computeValidationInformation(ValidatorHelper.java:164)
+	at org.eclipse.wst.xml.core.internal.validation.XMLValidator.validate(XMLValidator.java:333)
+	at org.eclipse.wst.xml.core.internal.validation.eclipse.Validator.validate(Validator.java:93)
+	at org.eclipse.wst.xml.core.internal.validation.core.AbstractNestedValidator.validate(AbstractNestedValidator.java:281)
+	at org.eclipse.wst.xml.core.internal.validation.core.AbstractNestedValidator.validate(AbstractNestedValidator.java:86)
+	at org.eclipse.wst.validation.Validator$V2.validate(Validator.java:1159)
+	at org.eclipse.wst.validation.internal.ValManager.validate(ValManager.java:704)
+	at org.eclipse.wst.validation.internal.ValManager$1.visit(ValManager.java:665)
+	at org.eclipse.wst.validation.internal.ValManager.accept(ValManager.java:810)
+	at org.eclipse.wst.validation.internal.ValManager.validate(ValManager.java:669)
+	at org.eclipse.wst.validation.internal.ValBuilderJob$Visitor.visit(ValBuilderJob.java:299)
+	at org.eclipse.core.internal.resources.Resource$2.visit(Resource.java:119)
+	at org.eclipse.core.internal.resources.Resource$1.visitElement(Resource.java:83)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:82)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:87)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.iterate(ElementTreeIterator.java:129)
+	at org.eclipse.core.internal.resources.Resource.accept(Resource.java:93)
+	at org.eclipse.core.internal.resources.Resource.accept(Resource.java:51)
+	at org.eclipse.core.internal.resources.Resource.accept(Resource.java:116)
+	at org.eclipse.core.internal.resources.Resource.accept(Resource.java:104)
+	at org.eclipse.wst.validation.internal.ValBuilderJob.fullBuild(ValBuilderJob.java:219)
+	at org.eclipse.wst.validation.internal.ValBuilderJob.run(ValBuilderJob.java:178)
+	at org.eclipse.wst.validation.internal.ValBuilderJob.runInWorkspace(ValBuilderJob.java:126)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:08.965
+!MESSAGE The artifact javax.xml:jaxb-api:jar:2.1 has been relocated to javax.xml.bind:jaxb-api:jar:2.1
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:09.013
+!MESSAGE Failure to transfer org.codehaus.mojo:jaxws-maven-plugin/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata org.codehaus.mojo:jaxws-maven-plugin/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): nexus.expediacorporate.eu
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:09.021
+!MESSAGE The artifact javax.xml:jaxb-api:jar:2.1 has been relocated to javax.xml.bind:jaxb-api:jar:2.1
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:09.058
+!MESSAGE cannot find file for junit:junit:4.8.2
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:09.059
+!MESSAGE cannot find file for javax.xml:jaxb-api:2.1
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:09.059
+!MESSAGE cannot find file for org.springframework:spring-test:3.0.5.RELEASE
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:09.059
+!MESSAGE cannot find file for org.mockito:mockito-all:1.9.0
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:09.060
+!MESSAGE cannot find file for uk.co.jemos.podam:podam:3.0.2.RELEASE
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:09.061
+!MESSAGE Using platform encoding (Cp1252), build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:13.353
+!MESSAGE CatalogItem org.eclipse.m2e.discovery.lifecyclemapping.m2e-egit does not contain lifecycle mapping metadata
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:36:13.356
+!MESSAGE CatalogItem org.eclipse.m2e.discovery.lifecyclemapping.m2e-subversive does not contain lifecycle mapping metadata
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:38:18.608
+!MESSAGE Could not transfer metadata com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): connect timed out
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:38:18.612
+!MESSAGE Failure to transfer com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): connect timed out
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:38:39.945
+!MESSAGE Failure to transfer com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): connect timed out
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:38:39.947
+!MESSAGE Failure to transfer com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): connect timed out
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:38:41.182
+!MESSAGE Failure to transfer com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): connect timed out
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:38:41.185
+!MESSAGE Failure to transfer com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): connect timed out
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:38:41.249
+!MESSAGE Failure to transfer org.codehaus.mojo:jaxws-maven-plugin/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata org.codehaus.mojo:jaxws-maven-plugin/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): nexus.expediacorporate.eu
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:38:41.257
+!MESSAGE The artifact javax.xml:jaxb-api:jar:2.1 has been relocated to javax.xml.bind:jaxb-api:jar:2.1
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:38:41.414
+!MESSAGE Failure to transfer com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): connect timed out
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:38:41.417
+!MESSAGE Failure to transfer com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): connect timed out
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:38:41.612
+!MESSAGE Failure to transfer com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): connect timed out
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:38:41.615
+!MESSAGE Failure to transfer com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): connect timed out
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:38:52.175
+!MESSAGE Could not transfer metadata com.egencia.griffin:griffin-client:1.7-RC17-SNAPSHOT/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): connect timed out
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:38:52.180
+!MESSAGE Failure to transfer com.egencia.griffin:griffin-client:1.7-RC17-SNAPSHOT/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata com.egencia.griffin:griffin-client:1.7-RC17-SNAPSHOT/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): connect timed out
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:39:03.415
+!MESSAGE Failure to transfer com.egencia.griffin:griffin-client:1.7-RC17-SNAPSHOT/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata com.egencia.griffin:griffin-client:1.7-RC17-SNAPSHOT/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): connect timed out
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:39:03.417
+!MESSAGE Failure to transfer com.egencia.griffin:griffin-client:1.7-RC17-SNAPSHOT/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata com.egencia.griffin:griffin-client:1.7-RC17-SNAPSHOT/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): connect timed out
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:43:49.078
+!MESSAGE Failure to transfer com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): connect timed out
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:43:49.081
+!MESSAGE Failure to transfer com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): connect timed out
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:43:49.238
+!MESSAGE Failure to transfer com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): connect timed out
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-10 15:43:49.240
+!MESSAGE Failure to transfer com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from http://nexus.expediacorporate.eu/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of egencia has elapsed or updates are forced. Original error: Could not transfer metadata com.egencia.griffin:griffin-model:1.7-RC17-SNAPSHOT/maven-metadata.xml from/to egencia (http://nexus.expediacorporate.eu/nexus/content/groups/public/): connect timed out

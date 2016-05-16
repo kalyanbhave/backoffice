@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SafeNetWS.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SafeNetWS_ENettService_vNettService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://198.151.56.10/vNettService/vNettService.svc/RS</Value>
+    </Setting>
+    <Setting Name="SafeNetWS_NavService_Navision" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://navws-test.sb.karmalab.net/NavWebService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

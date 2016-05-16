@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\Temp\pub" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profil1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="False" />
+  <publishProfile publishUrl="C:\Temp\pub" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profil2" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/SafeNetWS.dll" publishTime="10/13/2014 11:25:33" />
+    <file relUrl="bin/SafeNetWS.pdb" publishTime="10/13/2014 11:25:33" />
+    <file relUrl="WSS.asmx" publishTime="04/25/2014 16:43:50" />
+    <file relUrl="Web.config" publishTime="10/13/2014 10:51:54" />
+    <file relUrl="bin/ingdnp.dll" publishTime="07/17/2011 23:22:26" />
+    <file relUrl="Global.asax" publishTime="04/25/2014 16:43:45" />
+  </publishProfile>
+</publishData>

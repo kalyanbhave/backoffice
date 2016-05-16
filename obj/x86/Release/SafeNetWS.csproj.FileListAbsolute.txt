@@ -1,0 +1,5 @@
+C:\Projets\SafeNetWS\SafeNetWS\bin\x86\Release\SafeNetWS.dll
+C:\Projets\SafeNetWS\SafeNetWS\bin\x86\Release\SafeNetWS.pdb
+C:\Projets\SafeNetWS\SafeNetWS\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Projets\SafeNetWS\SafeNetWS\obj\x86\Release\SafeNetWS.dll
+C:\Projets\SafeNetWS\SafeNetWS\obj\x86\Release\SafeNetWS.pdb

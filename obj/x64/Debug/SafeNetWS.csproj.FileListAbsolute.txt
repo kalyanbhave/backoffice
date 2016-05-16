@@ -1,0 +1,4 @@
+C:\Users\shassan\Desktop\Projets\Perforce\1992\shassanali_1992\depot\Backoffice\NET\WSS\main\SafeNetWS\bin\SafeNetWS.dll
+C:\Users\shassan\Desktop\Projets\Perforce\1992\shassanali_1992\depot\Backoffice\NET\WSS\main\SafeNetWS\bin\SafeNetWS.pdb
+C:\Users\shassan\Desktop\Projets\Perforce\1992\shassanali_1992\depot\Backoffice\NET\WSS\main\SafeNetWS\obj\x64\Debug\SafeNetWS.dll
+C:\Users\shassan\Desktop\Projets\Perforce\1992\shassanali_1992\depot\Backoffice\NET\WSS\main\SafeNetWS\obj\x64\Debug\SafeNetWS.pdb

@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{26828C12-307F-4B01-8F3B-47F2DC0FD62F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SafeNetWS</RootNamespace>
+    <AssemblyName>SafeNetWS</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SignAssembly>false</SignAssembly>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AntiXssLibrary">
+      <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\AntiXssLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlSanitizationLibrary">
+      <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="ingdnp, Version=5.1.2.5, Culture=neutral, PublicKeyToken=c73d618bb0b678e0, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\SafeNet ProtectApp\DotNet\ingdnp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="packages.config" />
+    <Content Include="Web References\NavService\AnalyticalCode.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\NavService\NavWebService.disco" />
+    <Content Include="WSS.asmx">
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="business\arguments\reader\ArgsForVPaymentIDLC.cs" />
+    <Compile Include="business\arguments\reader\ArgsForVPaymentIDHotel.cs" />
+    <Compile Include="business\arguments\reader\ArgsLodgedCardReferences.cs" />
+    <Compile Include="business\arguments\reader\ENettCancelRequestVAN.cs" />
+    <Compile Include="business\arguments\reader\ENettGetVANDetails.cs" />
+    <Compile Include="business\arguments\reader\ENettAmendVAN.cs" />
+    <Compile Include="business\arguments\reader\ENettECNRequestorAccess.cs" />
+    <Compile Include="business\arguments\reader\ENettRequestVAN.cs" />
+    <Compile Include="business\arguments\reader\UserPaymentTypeReader.cs" />
+    <Compile Include="business\NavServiceUtils.cs" />
+    <Compile Include="business\response\reader\CreditCardGeneratedReader.cs" />
+    <Compile Include="business\response\reader\InsertTransactCardResponseReader.cs" />
+    <Compile Include="business\response\reader\TravelerPaymentMeansResponseReader.cs" />
+    <Compile Include="business\response\writer\BookingFormOfPaymentResponse.cs" />
+    <Compile Include="business\response\writer\ENettCancelVANResponse.cs" />
+    <Compile Include="business\response\writer\DeleteProfilCardResponse.cs" />
+    <Compile Include="business\response\writer\InsertPaymentCardResponse.cs" />
+    <Compile Include="business\response\writer\SimpleValueResponse.cs" />
+    <Compile Include="business\response\writer\TokenValidationResponse.cs" />
+    <Compile Include="business\response\writer\ENettGetVANDetailsResponse.cs" />
+    <Compile Include="business\response\writer\LodgedCardReferencesResponse.cs" />
+    <Compile Include="business\response\writer\ENettAmendVANResponse.cs" />
+    <Compile Include="business\response\writer\DeleteENettECNResponse.cs" />
+    <Compile Include="business\response\writer\ENettECNResponse.cs" />
+    <Compile Include="business\response\writer\ENettRequestVANResponse.cs" />
+    <Compile Include="business\response\writer\InsertENettECNResponse.cs" />
+    <Compile Include="business\response\writer\TestAllComponentsResponse.cs" />
+    <Compile Include="business\response\writer\GDSCustomerPaymentTypeResponse.cs" />
+    <Compile Include="business\response\writer\GDSCorporationPaymentTypeResponse.cs" />
+    <Compile Include="business\response\writer\EgenciaCardResponse.cs" />
+    <Compile Include="business\response\writer\InsertEgenciaCardResponse.cs" />
+    <Compile Include="business\response\writer\DecryptFileResponse.cs" />
+    <Compile Include="business\response\writer\EncryptFileResponse.cs" />
+    <Compile Include="business\response\writer\TravelerPaymentMeansResponse.cs" />
+    <Compile Include="business\response\writer\FOCardResponse.cs" />
+    <Compile Include="business\response\writer\VPaymentIDValidationResponse.cs" />
+    <Compile Include="business\response\writer\VPaymentIDResponse.cs" />
+    <Compile Include="business\response\writer\CreditCardCheckResponse.cs" />
+    <Compile Include="business\response\writer\CreditCardValidationResponse.cs" />
+    <Compile Include="business\response\writer\CreditCardGeneratedResponse.cs" />
+    <Compile Include="business\response\writer\InsertTransactCardResponse.cs" />
+    <Compile Include="creditcard\creditcardvalidator\bibit\BibitVerifier.cs" />
+    <Compile Include="creditcard\creditcardvalidator\CachedValidationResult.cs" />
+    <Compile Include="creditcard\creditcardvalidator\bibit\RBSPaymentServiceRequest.cs" />
+    <Compile Include="creditcard\creditcardvalidator\bibit\RBSPaymentServiceResponse.cs" />
+    <Compile Include="creditcard\creditcardgenerator\CreditCardNumberGenerator.cs" />
+    <Compile Include="creditcard\creditcardvalidator\ProviderVerifierResult.cs" />
+    <Compile Include="creditcard\virtualcard\enett\CompleteIssueVNettVANRequest.cs" />
+    <Compile Include="creditcard\virtualcard\enett\ENettUtils.cs" />
+    <Compile Include="creditcard\virtualcard\enett\CompleteIssueVNettVANResponse.cs" />
+    <Compile Include="database\VCardLogConnection.cs" />
+    <Compile Include="database\NavisionSettingsConnection.cs" />
+    <Compile Include="database\CreditCardLogConnection.cs" />
+    <Compile Include="database\result\ENettECNRequestorResult.cs" />
+    <Compile Include="database\result\EgenciaEncryptedPanInfoResult.cs" />
+    <Compile Include="database\result\EgenciaPanInfoResult.cs" />
+    <Compile Include="database\result\EgenciaCardTokenResult.cs" />
+    <Compile Include="database\result\InsertEgenciaCardInEncryptedDBResult.cs" />
+    <Compile Include="database\result\FOTokenResult.cs" />
+    <Compile Include="database\row\LodgedCardReferencesData.cs" />
+    <Compile Include="database\row\value\LodgedCardReferenceValue.cs" />
+    <Compile Include="database\row\EncryptedEgenciaData.cs" />
+    <Compile Include="database\row\value\EncryptedEgenciaValue.cs" />
+    <Compile Include="database\row\VPaymentIDData.cs" />
+    <Compile Include="exception\CEEException.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="log\Filelog.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="test\connectivity\ConnectivityTestor.cs" />
+    <Compile Include="utils\cache\NetCache.cs" />
+    <Compile Include="utils\SecurePAN.cs" />
+    <Compile Include="utils\MailSender.cs" />
+    <Compile Include="utils\MyThread.cs" />
+    <Compile Include="utils\ShortGuid.cs" />
+    <Compile Include="business\arguments\quality\VPaymentIDQC.cs" />
+    <Compile Include="Web References\ENettService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\NavService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="www\HttpUtil.cs" />
+    <Compile Include="database\result\ExtendedPanInfoResult.cs" />
+    <Compile Include="database\result\SaveCardResult.cs" />
+    <Compile Include="database\result\NavisionCardResult.cs" />
+    <Compile Include="exception\CCEExceptionUtil.cs" />
+    <Compile Include="business\response\reader\PanResponseReader.cs" />
+    <Compile Include="business\response\writer\FOPanResponse.cs" />
+    <Compile Include="business\response\writer\InsertEncryptedFOCardResponse.cs" />
+    <Compile Include="business\response\writer\KeyRotationResponse.cs" />
+    <Compile Include="business\response\writer\InsertEncryptedCardResponse.cs" />
+    <Compile Include="business\response\writer\PanResponse.cs" />
+    <Compile Include="business\response\writer\UserPaymentTypeResponse.cs" />
+    <Compile Include="database\EncryptedFODataConnection.cs" />
+    <Compile Include="database\result\FOPanInfoResult.cs" />
+    <Compile Include="database\result\FOEncryptedPanInfoResult.cs" />
+    <Compile Include="database\result\TokensMappingResult.cs" />
+    <Compile Include="database\result\InsertCardInEncryptedFODBResult.cs" />
+    <Compile Include="database\result\InsertCardInNavisionResult.cs" />
+    <Compile Include="database\row\FORemainingEncryptedData.cs" />
+    <Compile Include="database\row\value\FORemainingEncryptedValue.cs" />
+    <Compile Include="database\row\EncryptedData.cs" />
+    <Compile Include="database\result\KeyRotationResult.cs" />
+    <Compile Include="database\result\InsertCardInEncryptedDBResult.cs" />
+    <Compile Include="database\result\UserPaymentTypeResult.cs" />
+    <Compile Include="exception\CCEExceptionMap.cs" />
+    <Compile Include="exception\CCEExceptionInfo.cs" />
+    <Compile Include="messages\Messages.cs" />
+    <Compile Include="business\arguments\quality\ArgsChecker.cs" />
+    <Compile Include="business\arguments\reader\UserBookingPaymentReader.cs" />
+    <Compile Include="business\response\reader\UserInfoResponseReader.cs" />
+    <Compile Include="business\response\writer\UserBookingPaymentResponse.cs" />
+    <Compile Include="business\response\writer\UserInfoResponse.cs" />
+    <Compile Include="creditcard\creditcardvalidator\CreditCardVerifier.cs" />
+    <Compile Include="creditcard\CardInfos.cs" />
+    <Compile Include="database\EncryptedDataConnection.cs" />
+    <Compile Include="database\NavisionDbConnection.cs" />
+    <Compile Include="database\result\UserBookingPaymentRSResult.cs" />
+    <Compile Include="database\result\InsertCardResult.cs" />
+    <Compile Include="database\result\PanInfoResult.cs" />
+    <Compile Include="log\Logger.cs" />
+    <Compile Include="business\response\reader\ExtendedPanResponseReader.cs" />
+    <Compile Include="business\response\writer\ExtendedPanResponse.cs" />
+    <Compile Include="business\response\reader\SimpleResponseReader.cs" />
+    <Compile Include="business\response\writer\TokenResponse.cs" />
+    <Compile Include="business\response\writer\InsertCardResponse.cs" />
+    <Compile Include="business\response\reader\InsertCardResponseReader.cs" />
+    <Compile Include="login\ldap\LDAPAuthentication.cs" />
+    <Compile Include="login\UserInfo.cs" />
+    <Compile Include="business\Services.cs">
+    </Compile>
+    <Compile Include="utils\Const.cs" />
+    <Compile Include="utils\crypting\safenet\SafeNetSession.cs" />
+    <Compile Include="utils\crypting\EncDec.cs" />
+    <Compile Include="utils\Util.cs" />
+    <Compile Include="WSS.asmx.cs">
+      <DependentUpon>WSS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="www\RemoteHost.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="messages\messages_de_DE.properties" />
+    <None Include="messages\messages_en_US.properties" />
+    <None Include="messages\messages_es_ES.properties" />
+    <None Include="messages\messages_fr_FR.properties" />
+    <None Include="messages\messages_it_IT.properties" />
+    <None Include="messages\messages_nl_NL.properties" />
+    <None Include="messages\messages_pt_PT.properties" />
+    <None Include="messages\messages_se_SE.properties" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ENettService\AmendVNettVANResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ENettService\CancelVNettVANResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ENettService\GetVNettFxQuoteResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ENettService\GetVNettVANResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ENettService\IssueVNettVANResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ENettService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ENettService\vNettService.wsdl" />
+    <None Include="Web References\NavService\NavWebService.wsdl" />
+    <None Include="Web References\NavService\NAV_CardTypeProviders.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NavService\Nav_CustomerInformation.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NavService\Nav_CustomerInformationMice.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NavService\NAV_CustomerRefTranslates.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NavService\NAV_CustomerUnusedCredits.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <Content Include="Web References\NavService\Nav_InsertPaymentCard.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\NavService\Nav_PartnerTracking.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NavService\Nav_PartnerTrackingInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NavService\Nav_PaymentMeans.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NavService\NAV_RejectPayments.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NavService\NAV_TravelerUnusedCredits.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NavService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://navws-test.sb.karmalab.net/NavWebService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\NavService\</RelPath>
+      <UpdateFromURL>http://navws-test.sb.karmalab.net/NavWebService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SafeNetWS_NavService_Navision</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://enett-demo.com/vNettService/vNettService.svc%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ENettService\</RelPath>
+      <UpdateFromURL>https://enett-demo.com/vNettService/vNettService.svc%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SafeNetWS_ENettService_vNettService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1106</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

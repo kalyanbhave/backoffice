@@ -1,0 +1,1428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s10="urn:microsoft-dynamics-nav/xmlports/ExportRejectPayment" xmlns:s12="urn:microsoft-dynamics-nav/xmlports/ExportCustomerRefTranslates" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s4="urn:microsoft-dynamics-nav/xmlports/ExportPartnerTrackingList" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s8="urn:microsoft-dynamics-nav/xmlports/ExportPaymentCard" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s5="urn:microsoft-dynamics-nav/xmlports/ExportPartnerTrackingInfo" xmlns:s1="urn:microsoft-dynamics-nav/xmlports/ExportCustomerInformation" xmlns:s9="urn:microsoft-dynamics-nav/xmlports/ExportPaymentMeans" xmlns:tns="http://navws-prd:7047/" xmlns:s6="urn:microsoft-dynamics-nav/xmlports/ExportUnusedCreditsActivCust" xmlns:s2="urn:microsoft-dynamics-nav/xmlports/ExportCustomerInformationMice" xmlns:s11="urn:microsoft-dynamics-nav/xmlports/ExportCardTypeProvider" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s7="urn:microsoft-dynamics-nav/xmlports/ExportTravelerUnusedCredits" xmlns:s3="urn:microsoft-dynamics-nav/xmlports/GetTravelerCostCenter" targetNamespace="http://navws-prd:7047/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://navws-prd:7047/">
+      <s:import namespace="urn:microsoft-dynamics-nav/xmlports/ExportCustomerInformation" />
+      <s:import namespace="urn:microsoft-dynamics-nav/xmlports/ExportCustomerInformationMice" />
+      <s:import namespace="urn:microsoft-dynamics-nav/xmlports/GetTravelerCostCenter" />
+      <s:import namespace="urn:microsoft-dynamics-nav/xmlports/ExportPartnerTrackingList" />
+      <s:import namespace="urn:microsoft-dynamics-nav/xmlports/ExportPartnerTrackingInfo" />
+      <s:import namespace="urn:microsoft-dynamics-nav/xmlports/ExportUnusedCreditsActivCust" />
+      <s:import namespace="urn:microsoft-dynamics-nav/xmlports/ExportTravelerUnusedCredits" />
+      <s:import namespace="urn:microsoft-dynamics-nav/xmlports/ExportPaymentCard" />
+      <s:import namespace="urn:microsoft-dynamics-nav/xmlports/ExportPaymentMeans" />
+      <s:import namespace="urn:microsoft-dynamics-nav/xmlports/ExportRejectPayment" />
+      <s:import namespace="urn:microsoft-dynamics-nav/xmlports/ExportCardTypeProvider" />
+      <s:import namespace="urn:microsoft-dynamics-nav/xmlports/ExportCustomerRefTranslates" />
+      <s:element name="CreateCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comName2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="postCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="countryCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="languageCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="externalPrinting" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="deleteOnKDS" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="comCodeTemplate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="companyCategory" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateCustomerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="custInfo" type="s1:Nav_CustomerInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custInfo" type="s1:Nav_CustomerInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerMice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="custInfo" type="s2:Nav_CustomerInformationMice" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerMiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custInfo" type="s2:Nav_CustomerInformationMice" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTravelerCostCenter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Percode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TravInfo" type="s3:AnalyticalCode" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTravelerCostCenterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TravInfo" type="s3:AnalyticalCode" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateTraveller">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travTitle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travDirectPhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travDirectFax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travMobilePhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travHomePhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="languageCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="emailMode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travFirstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travTempKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travCC1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travCC2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travCC3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travCC4" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travCC5" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travCC1Id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travCC2Id" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="analyticalScope" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isAccountant" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isTravelDir" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isOccasional" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isVIP" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="deleteOnKDS" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateTravellerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateTravellerResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCostCenter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comcode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="analyticalRange" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="analyticalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="identifier" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isActive" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCostCenterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateCostCenterResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPartnerTrackingList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="exportPartnerTracking" type="s4:Nav_PartnerTracking" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPartnerTrackingListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exportPartnerTracking" type="s4:Nav_PartnerTracking" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPartnerTrackingInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PartnerID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="exportPartnerTrackingInfo" type="s5:Nav_PartnerTrackingInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPartnerTrackingInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exportPartnerTrackingInfo" type="s5:Nav_PartnerTrackingInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnusedCreditsActivatedCust">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="exportCustomerUnusedCredits" type="s6:NAV_CustomerUnusedCredits" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnusedCreditsActivatedCustResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exportCustomerUnusedCredits" type="s6:NAV_CustomerUnusedCredits" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTravelerUnusedCredits">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="perCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travellerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travellerFirstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travellerTitle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="airLine" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="exportTravellerUnusedCredits" type="s7:NAV_TravelerUnusedCredits" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTravelerUnusedCreditsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exportTravellerUnusedCredits" type="s7:NAV_TravelerUnusedCredits" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPaymentCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="perCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="costCenter" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExpirationDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Cardtype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="LodgedCard" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TruncatedPan" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FirstCardReference" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="OneOffCard" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ForceWarnings" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="contextSource" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Context" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InsertPaymentCard" type="s8:Nav_InsertPaymentCard" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPaymentCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertPaymentCard" type="s8:Nav_InsertPaymentCard" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTravellerPaymentMeans">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="perCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serviceGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="costCenter" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="exportPaymentMeans" type="s9:Nav_PaymentMeans" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTravellerPaymentMeansResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exportPaymentMeans" type="s9:Nav_PaymentMeans" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetPaymentMeans">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="costCenter" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="perCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serviceGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="means" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetPaymentMeansResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeletePaymentMeans">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="costCenter" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="perCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serviceGroup" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePaymentMeansResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeletePaymentMeansResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRejectPaymentAction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardFormat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rejectReason" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sharingType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="exportRejectPayments" type="s10:NAV_RejectPayments" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRejectPaymentActionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exportRejectPayments" type="s10:NAV_RejectPayments" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTripDestinationAndClass">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="documentNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="entryNoSLE" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTripDestinationAndClassResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTripDestinationAndClassResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMerchantAndEnhancedFlow">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardProviderCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lodged" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardBin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="exportCardType" type="s11:NAV_CardTypeProviders" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMerchantAndEnhancedFlowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exportCardType" type="s11:NAV_CardTypeProviders" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPaymentCustomerReference">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customerNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="travellerNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="provider" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="exportCustRef" type="s12:NAV_CustomerRefTranslates" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPaymentCustomerReferenceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exportCustRef" type="s12:NAV_CustomerRefTranslates" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRouting">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="documentNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="entryNoSLE" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoutingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRoutingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProductSpecificInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="documentNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lineNo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProductSpecificInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProductSpecificInformationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunConnectivityTest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunConnectivityTestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RunConnectivityTestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncryptTextNavision">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="valueToEncript" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncryptTextNavisionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EncryptTextNavisionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/ExportCustomerInformation">
+      <s:complexType name="Nav_CustomerInformation" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Customer" type="s1:Customer" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavException" type="s1:NavException" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Customer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="No." type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhoneNo." type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FaxNo." type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AllInBUPilot" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TypeOfCustomer" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NavException" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/ExportCustomerInformationMice">
+      <s:complexType name="Nav_CustomerInformationMice" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Customer" type="s2:Customer" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavException" type="s2:NavException" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Customer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="No." type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TypeOfCustomer" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NavException" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/GetTravelerCostCenter">
+      <s:complexType name="AnalyticalCode" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Traveler_Info" type="s3:Traveler_Info" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavException" type="s3:NavException" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Traveler_Info">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PerCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PercodeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comcode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CC4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CC5" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NavException" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/ExportPartnerTrackingList">
+      <s:complexType name="Nav_PartnerTracking" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Partner" type="s4:Partner" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavException" type="s4:NavException" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Partner">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NavException" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/ExportPartnerTrackingInfo">
+      <s:complexType name="Nav_PartnerTrackingInfo" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Partner" type="s5:Partner" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavException" type="s5:NavException" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Partner">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Sftp" type="s5:Sftp" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Sftp" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Server" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NavException" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/ExportUnusedCreditsActivCust">
+      <s:complexType name="NAV_CustomerUnusedCredits" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NAV_Customer" type="s6:NAV_Customer" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavException" type="s6:NavException" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NAV_Customer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Comcode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NavException" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/ExportTravelerUnusedCredits">
+      <s:complexType name="NAV_TravelerUnusedCredits" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NAV_TravelerUnusedCredit" type="s7:NAV_TravelerUnusedCredit" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavException" type="s7:NavException" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NAV_TravelerUnusedCredit">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TicketNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ExpiryDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Percode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TravelerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Airline" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NavException" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/ExportPaymentCard">
+      <s:complexType name="Nav_InsertPaymentCard" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InsertCardResult" type="s8:InsertCardResult" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavException" type="s8:NavException" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InsertCardResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CardReference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MerchandFlow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EnhancedFlow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OnlineCheck" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Operation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardUsedByAnotherCustomer" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NavException" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/ExportPaymentMeans">
+      <s:complexType name="Nav_PaymentMeans" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RequestedService" type="s9:RequestedService" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavException" type="s9:NavException" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RequestedService">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Origin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Service" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CostCenterID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Card" type="s9:Card" />
+        </s:sequence>
+        <s:attribute name="RequestedValue" type="s:string" />
+      </s:complexType>
+      <s:complexType name="Card" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CardType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardToken" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExpirationDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CardReference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LodgedCard" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MerchandFlow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EnhanceFlow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TruncatedPAN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OnlineCheck" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NavException" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/ExportRejectPayment">
+      <s:complexType name="NAV_RejectPayments" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NAV_RejectPayment" type="s10:NAV_RejectPayment" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavException" type="s10:NavException" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NAV_RejectPayment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RAction" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NbDays" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RActionLabel" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NavException" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/ExportCardTypeProvider">
+      <s:complexType name="NAV_CardTypeProviders" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NAV_CardTypeProvider" type="s11:NAV_CardTypeProvider" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavException" type="s11:NavException" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NAV_CardTypeProvider">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CardType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LodgedType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FinancialFlow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EnhancedFlow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OnlineCheck" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NavException" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/ExportCustomerRefTranslates">
+      <s:complexType name="NAV_CustomerRefTranslates" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NAV_CustomerRefTranslate" type="s12:NAV_CustomerRefTranslate" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavException" type="s12:NavException" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NAV_CustomerRefTranslate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Label" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NavException" mixed="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NavExceptionDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateCustomer" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerMiceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerMice" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerMiceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerMiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTravelerCostCenterSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTravelerCostCenter" />
+  </wsdl:message>
+  <wsdl:message name="GetTravelerCostCenterSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTravelerCostCenterResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateTravellerSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateTraveller" />
+  </wsdl:message>
+  <wsdl:message name="CreateTravellerSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateTravellerResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCostCenterSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateCostCenter" />
+  </wsdl:message>
+  <wsdl:message name="CreateCostCenterSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateCostCenterResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPartnerTrackingListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPartnerTrackingList" />
+  </wsdl:message>
+  <wsdl:message name="GetPartnerTrackingListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPartnerTrackingListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPartnerTrackingInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPartnerTrackingInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetPartnerTrackingInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPartnerTrackingInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUnusedCreditsActivatedCustSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUnusedCreditsActivatedCust" />
+  </wsdl:message>
+  <wsdl:message name="GetUnusedCreditsActivatedCustSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUnusedCreditsActivatedCustResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTravelerUnusedCreditsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTravelerUnusedCredits" />
+  </wsdl:message>
+  <wsdl:message name="GetTravelerUnusedCreditsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTravelerUnusedCreditsResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertPaymentCardSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPaymentCard" />
+  </wsdl:message>
+  <wsdl:message name="InsertPaymentCardSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPaymentCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTravellerPaymentMeansSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTravellerPaymentMeans" />
+  </wsdl:message>
+  <wsdl:message name="GetTravellerPaymentMeansSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTravellerPaymentMeansResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetPaymentMeansSoapIn">
+    <wsdl:part name="parameters" element="tns:SetPaymentMeans" />
+  </wsdl:message>
+  <wsdl:message name="SetPaymentMeansSoapOut">
+    <wsdl:part name="parameters" element="tns:SetPaymentMeansResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeletePaymentMeansSoapIn">
+    <wsdl:part name="parameters" element="tns:DeletePaymentMeans" />
+  </wsdl:message>
+  <wsdl:message name="DeletePaymentMeansSoapOut">
+    <wsdl:part name="parameters" element="tns:DeletePaymentMeansResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRejectPaymentActionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRejectPaymentAction" />
+  </wsdl:message>
+  <wsdl:message name="GetRejectPaymentActionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRejectPaymentActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTripDestinationAndClassSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTripDestinationAndClass" />
+  </wsdl:message>
+  <wsdl:message name="GetTripDestinationAndClassSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTripDestinationAndClassResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMerchantAndEnhancedFlowSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMerchantAndEnhancedFlow" />
+  </wsdl:message>
+  <wsdl:message name="GetMerchantAndEnhancedFlowSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMerchantAndEnhancedFlowResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentCustomerReferenceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPaymentCustomerReference" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentCustomerReferenceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPaymentCustomerReferenceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRoutingSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRouting" />
+  </wsdl:message>
+  <wsdl:message name="GetRoutingSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRoutingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProductSpecificInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProductSpecificInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetProductSpecificInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProductSpecificInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="RunConnectivityTestSoapIn">
+    <wsdl:part name="parameters" element="tns:RunConnectivityTest" />
+  </wsdl:message>
+  <wsdl:message name="RunConnectivityTestSoapOut">
+    <wsdl:part name="parameters" element="tns:RunConnectivityTestResponse" />
+  </wsdl:message>
+  <wsdl:message name="EncryptTextNavisionSoapIn">
+    <wsdl:part name="parameters" element="tns:EncryptTextNavision" />
+  </wsdl:message>
+  <wsdl:message name="EncryptTextNavisionSoapOut">
+    <wsdl:part name="parameters" element="tns:EncryptTextNavisionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="NavisionSoap">
+    <wsdl:operation name="CreateCustomer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Create Customer</wsdl:documentation>
+      <wsdl:input message="tns:CreateCustomerSoapIn" />
+      <wsdl:output message="tns:CreateCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerInformation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Customer Information</wsdl:documentation>
+      <wsdl:input message="tns:GetCustomerInformationSoapIn" />
+      <wsdl:output message="tns:GetCustomerInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerMice">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Customer Mice</wsdl:documentation>
+      <wsdl:input message="tns:GetCustomerMiceSoapIn" />
+      <wsdl:output message="tns:GetCustomerMiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTravelerCostCenter">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get CC4 &amp; CC5</wsdl:documentation>
+      <wsdl:input message="tns:GetTravelerCostCenterSoapIn" />
+      <wsdl:output message="tns:GetTravelerCostCenterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTraveller">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Create Traveller</wsdl:documentation>
+      <wsdl:input message="tns:CreateTravellerSoapIn" />
+      <wsdl:output message="tns:CreateTravellerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCostCenter">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Create Cost Center</wsdl:documentation>
+      <wsdl:input message="tns:CreateCostCenterSoapIn" />
+      <wsdl:output message="tns:CreateCostCenterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerTrackingList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Partner Tracking List</wsdl:documentation>
+      <wsdl:input message="tns:GetPartnerTrackingListSoapIn" />
+      <wsdl:output message="tns:GetPartnerTrackingListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerTrackingInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Partner Tracking Info</wsdl:documentation>
+      <wsdl:input message="tns:GetPartnerTrackingInfoSoapIn" />
+      <wsdl:output message="tns:GetPartnerTrackingInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnusedCreditsActivatedCust">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Activated Customer On Unused Ticket</wsdl:documentation>
+      <wsdl:input message="tns:GetUnusedCreditsActivatedCustSoapIn" />
+      <wsdl:output message="tns:GetUnusedCreditsActivatedCustSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTravelerUnusedCredits">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Traveler Unused Credit</wsdl:documentation>
+      <wsdl:input message="tns:GetTravelerUnusedCreditsSoapIn" />
+      <wsdl:output message="tns:GetTravelerUnusedCreditsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaymentCard">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Set Insert CC on Payment Card</wsdl:documentation>
+      <wsdl:input message="tns:InsertPaymentCardSoapIn" />
+      <wsdl:output message="tns:InsertPaymentCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTravellerPaymentMeans">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Traveller Payment Means</wsdl:documentation>
+      <wsdl:input message="tns:GetTravellerPaymentMeansSoapIn" />
+      <wsdl:output message="tns:GetTravellerPaymentMeansSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPaymentMeans">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Set Payment Means</wsdl:documentation>
+      <wsdl:input message="tns:SetPaymentMeansSoapIn" />
+      <wsdl:output message="tns:SetPaymentMeansSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePaymentMeans">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Delete Payment Means</wsdl:documentation>
+      <wsdl:input message="tns:DeletePaymentMeansSoapIn" />
+      <wsdl:output message="tns:DeletePaymentMeansSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRejectPaymentAction">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Reject Payment Action</wsdl:documentation>
+      <wsdl:input message="tns:GetRejectPaymentActionSoapIn" />
+      <wsdl:output message="tns:GetRejectPaymentActionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTripDestinationAndClass">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Trip Destination and Class</wsdl:documentation>
+      <wsdl:input message="tns:GetTripDestinationAndClassSoapIn" />
+      <wsdl:output message="tns:GetTripDestinationAndClassSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMerchantAndEnhancedFlow">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Merchant And Enhanced Flow</wsdl:documentation>
+      <wsdl:input message="tns:GetMerchantAndEnhancedFlowSoapIn" />
+      <wsdl:output message="tns:GetMerchantAndEnhancedFlowSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentCustomerReference">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Payment Customer Reference</wsdl:documentation>
+      <wsdl:input message="tns:GetPaymentCustomerReferenceSoapIn" />
+      <wsdl:output message="tns:GetPaymentCustomerReferenceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRouting">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Document Routing</wsdl:documentation>
+      <wsdl:input message="tns:GetRoutingSoapIn" />
+      <wsdl:output message="tns:GetRoutingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductSpecificInformation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Product Specific Information</wsdl:documentation>
+      <wsdl:input message="tns:GetProductSpecificInformationSoapIn" />
+      <wsdl:output message="tns:GetProductSpecificInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RunConnectivityTest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Run Navision Connectivity Smoke Test</wsdl:documentation>
+      <wsdl:input message="tns:RunConnectivityTestSoapIn" />
+      <wsdl:output message="tns:RunConnectivityTestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EncryptTextNavision">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Encrypt with Navision Library</wsdl:documentation>
+      <wsdl:input message="tns:EncryptTextNavisionSoapIn" />
+      <wsdl:output message="tns:EncryptTextNavisionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NavisionSoap" type="tns:NavisionSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateCustomer">
+      <soap:operation soapAction="http://navws-prd:7047/CreateCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerInformation">
+      <soap:operation soapAction="http://navws-prd:7047/GetCustomerInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerMice">
+      <soap:operation soapAction="http://navws-prd:7047/GetCustomerMice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTravelerCostCenter">
+      <soap:operation soapAction="http://navws-prd:7047/GetTravelerCostCenter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTraveller">
+      <soap:operation soapAction="http://navws-prd:7047/CreateTraveller" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCostCenter">
+      <soap:operation soapAction="http://navws-prd:7047/CreateCostCenter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerTrackingList">
+      <soap:operation soapAction="http://navws-prd:7047/GetPartnerTrackingList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerTrackingInfo">
+      <soap:operation soapAction="http://navws-prd:7047/GetPartnerTrackingInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnusedCreditsActivatedCust">
+      <soap:operation soapAction="http://navws-prd:7047/GetUnusedCreditsActivatedCust" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTravelerUnusedCredits">
+      <soap:operation soapAction="http://navws-prd:7047/GetTravelerUnusedCredits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaymentCard">
+      <soap:operation soapAction="http://navws-prd:7047/InsertPaymentCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTravellerPaymentMeans">
+      <soap:operation soapAction="http://navws-prd:7047/GetTravellerPaymentMeans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPaymentMeans">
+      <soap:operation soapAction="http://navws-prd:7047/SetPaymentMeans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePaymentMeans">
+      <soap:operation soapAction="http://navws-prd:7047/DeletePaymentMeans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRejectPaymentAction">
+      <soap:operation soapAction="http://navws-prd:7047/GetRejectPaymentAction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTripDestinationAndClass">
+      <soap:operation soapAction="http://navws-prd:7047/GetTripDestinationAndClass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMerchantAndEnhancedFlow">
+      <soap:operation soapAction="http://navws-prd:7047/GetMerchantAndEnhancedFlow" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentCustomerReference">
+      <soap:operation soapAction="http://navws-prd:7047/GetPaymentCustomerReference" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRouting">
+      <soap:operation soapAction="http://navws-prd:7047/GetRouting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductSpecificInformation">
+      <soap:operation soapAction="http://navws-prd:7047/GetProductSpecificInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunConnectivityTest">
+      <soap:operation soapAction="http://navws-prd:7047/RunConnectivityTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncryptTextNavision">
+      <soap:operation soapAction="http://navws-prd:7047/EncryptTextNavision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NavisionSoap12" type="tns:NavisionSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateCustomer">
+      <soap12:operation soapAction="http://navws-prd:7047/CreateCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerInformation">
+      <soap12:operation soapAction="http://navws-prd:7047/GetCustomerInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerMice">
+      <soap12:operation soapAction="http://navws-prd:7047/GetCustomerMice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTravelerCostCenter">
+      <soap12:operation soapAction="http://navws-prd:7047/GetTravelerCostCenter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTraveller">
+      <soap12:operation soapAction="http://navws-prd:7047/CreateTraveller" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCostCenter">
+      <soap12:operation soapAction="http://navws-prd:7047/CreateCostCenter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerTrackingList">
+      <soap12:operation soapAction="http://navws-prd:7047/GetPartnerTrackingList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerTrackingInfo">
+      <soap12:operation soapAction="http://navws-prd:7047/GetPartnerTrackingInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnusedCreditsActivatedCust">
+      <soap12:operation soapAction="http://navws-prd:7047/GetUnusedCreditsActivatedCust" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTravelerUnusedCredits">
+      <soap12:operation soapAction="http://navws-prd:7047/GetTravelerUnusedCredits" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaymentCard">
+      <soap12:operation soapAction="http://navws-prd:7047/InsertPaymentCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTravellerPaymentMeans">
+      <soap12:operation soapAction="http://navws-prd:7047/GetTravellerPaymentMeans" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPaymentMeans">
+      <soap12:operation soapAction="http://navws-prd:7047/SetPaymentMeans" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePaymentMeans">
+      <soap12:operation soapAction="http://navws-prd:7047/DeletePaymentMeans" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRejectPaymentAction">
+      <soap12:operation soapAction="http://navws-prd:7047/GetRejectPaymentAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTripDestinationAndClass">
+      <soap12:operation soapAction="http://navws-prd:7047/GetTripDestinationAndClass" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMerchantAndEnhancedFlow">
+      <soap12:operation soapAction="http://navws-prd:7047/GetMerchantAndEnhancedFlow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentCustomerReference">
+      <soap12:operation soapAction="http://navws-prd:7047/GetPaymentCustomerReference" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRouting">
+      <soap12:operation soapAction="http://navws-prd:7047/GetRouting" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductSpecificInformation">
+      <soap12:operation soapAction="http://navws-prd:7047/GetProductSpecificInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunConnectivityTest">
+      <soap12:operation soapAction="http://navws-prd:7047/RunConnectivityTest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncryptTextNavision">
+      <soap12:operation soapAction="http://navws-prd:7047/EncryptTextNavision" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Navision">
+    <wsdl:port name="NavisionSoap" binding="tns:NavisionSoap">
+      <soap:address location="http://navws-test.sb.karmalab.net/NavWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NavisionSoap12" binding="tns:NavisionSoap12">
+      <soap12:address location="http://navws-test.sb.karmalab.net/NavWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

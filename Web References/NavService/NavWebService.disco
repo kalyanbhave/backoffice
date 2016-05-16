@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://navws-test.sb.karmalab.net/NavWebService.asmx?wsdl" docRef="http://navws-test.sb.karmalab.net/NavWebService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://navws-test.sb.karmalab.net/NavWebService.asmx" xmlns:q1="http://navws-prd:7047/" binding="q1:NavisionSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://navws-test.sb.karmalab.net/NavWebService.asmx" xmlns:q2="http://navws-prd:7047/" binding="q2:NavisionSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>
